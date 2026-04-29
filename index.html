@@ -1,575 +1,1791 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="WSN Testbed Management Interface website" />
-    <title>WSN Testbed Management Interface</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="site-header" id="top">
-      <a class="brand" href="#top"><span>WSN</span> Testbed</a>
-      <nav class="main-nav" aria-label="Primary navigation">
-        <a href="#overview">Overview</a>
-        <a href="#dashboard">Dashboard</a>
-        <a href="#nodes">Nodes</a>
-        <a href="#configuration">Config</a>
-        <a href="#control">Control</a>
-        <a href="#features">Features</a>
-        <a href="#results">Results</a>
-        <a class="nav-cta" href="#contact">Contact</a>
-      </nav>
-      <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false">
-        <span></span>
-        <span></span>
-      </button>
-    </header>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WSN Testbed Management Interface</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
-    <main>
-      <section class="hero" id="overview">
-        <div class="hero-grid" aria-hidden="true"></div>
-        <div class="hero-content">
-          <p class="eyebrow">Wireless sensor networks - Remote laboratory interface</p>
-          <h1>WSN Testbed <span>Management Interface</span></h1>
-          <p class="hero-copy">
-            A comprehensive website concept for configuring, programming, monitoring, and analyzing results from a
-            physical WSN testbed with remote access and clear network status visualization.
-          </p>
-          <div class="hero-actions">
-            <a class="btn-primary" href="#features">Explore Features</a>
-            <a class="btn-outline" href="#tools">View Toolchain</a>
-          </div>
-        </div>
-        <figure class="network-visual" aria-label="Wireless sensor network visualization">
-          <svg viewBox="0 0 620 440" role="img">
-            <defs>
-              <linearGradient id="panelFill" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#FDFBF8" />
-                <stop offset="1" stop-color="#F5EDD8" />
-              </linearGradient>
-            </defs>
-            <rect x="22" y="22" width="576" height="396" rx="3" fill="url(#panelFill)" stroke="rgba(139,115,64,.24)" />
-            <path d="M116 310 C 210 190, 334 176, 488 94" stroke="#C4A96D" stroke-width="2" fill="none" />
-            <path d="M116 310 C 230 340, 340 334, 486 266" stroke="#8B7340" stroke-width="2" fill="none" />
-            <path d="M184 142 C 284 236, 386 248, 486 266" stroke="rgba(45,42,36,.35)" stroke-width="2" fill="none" />
-            <g class="node gateway">
-              <circle cx="116" cy="310" r="34" />
-              <text x="116" y="316">GW</text>
-            </g>
-            <g class="node">
-              <circle cx="184" cy="142" r="26" />
-              <text x="184" y="148">N1</text>
-            </g>
-            <g class="node">
-              <circle cx="314" cy="224" r="26" />
-              <text x="314" y="230">N2</text>
-            </g>
-            <g class="node warning">
-              <circle cx="486" cy="94" r="26" />
-              <text x="486" y="100">N3</text>
-            </g>
-            <g class="node">
-              <circle cx="486" cy="266" r="26" />
-              <text x="486" y="272">N4</text>
-            </g>
-            <g class="metric-chip">
-              <rect x="64" y="58" width="150" height="48" rx="2" />
-              <text x="82" y="88">PDR 96.4%</text>
-            </g>
-            <g class="metric-chip">
-              <rect x="364" y="338" width="162" height="48" rx="2" />
-              <text x="382" y="368">Latency 24ms</text>
-            </g>
-          </svg>
-        </figure>
-      </section>
+<style>
+:root {
+  --gold: #8B7340;
+  --gold-light: #C4A96D;
+  --gold-pale: #F5EDD8;
+  --dark: #1A1814;
+  --charcoal: #2D2A24;
+  --mid: #6B6560;
+  --light: #F7F4EF;
+  --white: #FDFBF8;
+  --border: rgba(139,115,64,0.2);
+  --border-light: rgba(139,115,64,0.1);
+}
 
-      <section class="marquee" aria-label="System capabilities">
-        <div class="marquee-track">
-          <span>Configure Nodes</span>
-          <i></i>
-          <span>Program Firmware</span>
-          <i></i>
-          <span>Monitor Telemetry</span>
-          <i></i>
-          <span>Analyze Results</span>
-          <i></i>
-          <span>Remote Access</span>
-          <i></i>
-          <span>Network Status</span>
-        </div>
-      </section>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden;font-size:16px;}
 
-      <section class="intro-section">
-        <div class="section-heading">
-          <p class="eyebrow">Project Abstract</p>
-          <h2>Built for clear control over a physical WSN testbed.</h2>
-        </div>
-        <p class="abstract-text">
-          <strong>Abstract:</strong> Creation of a comprehensive user-friendly interface for configuring, programming,
-          monitoring, and analyzing results from a physical WSN testbed. The system provides remote access to testbed
-          functions and visualizes network status.
-        </p>
-      </section>
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem 4rem;
+  background:rgba(253,251,248,0.90);
+  backdrop-filter:blur(20px);
+  border-bottom:0.5px solid var(--border-light);
+  transition:padding 0.3s ease;
+}
+nav.scrolled{padding:0.85rem 4rem;}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;font-weight:600;letter-spacing:0.03em;
+  color:var(--dark);text-decoration:none;
+}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center;}
+.nav-links a{
+  font-size:0.75rem;font-weight:400;letter-spacing:0.13em;
+  text-transform:uppercase;color:var(--mid);text-decoration:none;
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{
+  background:var(--dark)!important;color:var(--white)!important;
+  padding:0.5rem 1.3rem!important;border-radius:2px!important;
+  letter-spacing:0.1em!important;transition:background 0.2s!important;
+}
+.nav-cta:hover{background:var(--gold)!important;color:var(--dark)!important;}
 
-      <section class="dashboard-section" id="dashboard">
-        <div class="section-heading">
-          <p class="eyebrow">Dashboard Page</p>
-          <h2>Live overview for real-time WSN testbed monitoring.</h2>
-        </div>
-        <div class="status-banner">System Running Normally</div>
-        <div class="dashboard-cards">
-          <article><span>Total Nodes</span><strong>12</strong></article>
-          <article><span>Active Nodes</span><strong>9</strong></article>
-          <article><span>Offline Nodes</span><strong>3</strong></article>
-          <article><span>Average Temperature</span><strong>27.4°C</strong></article>
-          <article><span>Average Humidity</span><strong>56%</strong></article>
-          <article><span>Alerts Count</span><strong>4</strong></article>
-          <article><span>Network Health</span><strong>91%</strong></article>
-        </div>
-      </section>
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  position:relative;padding:9rem 4rem 5rem;overflow:hidden;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(var(--border-light) 1px,transparent 1px),
+    linear-gradient(90deg,var(--border-light) 1px,transparent 1px);
+  background-size:80px 80px;opacity:0.5;
+}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;width:100%;}
+.hero-eyebrow{
+  font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.8rem;
+  opacity:0;animation:fadeUp 0.8s 0.15s forwards;
+}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.2rem,6.5vw,6.5rem);
+  font-weight:600;line-height:1.0;letter-spacing:-0.01em;
+  color:var(--dark);margin-bottom:1.8rem;
+  opacity:0;animation:fadeUp 0.9s 0.3s forwards;
+}
+.hero-title .accent{color:var(--gold);font-style:italic;}
+.hero-desc{
+  max-width:580px;font-size:1.1rem;font-weight:300;
+  line-height:1.8;color:var(--mid);margin-bottom:2.8rem;
+  opacity:0;animation:fadeUp 0.9s 0.45s forwards;
+}
+.hero-actions{
+  display:flex;gap:1.2rem;align-items:center;
+  opacity:0;animation:fadeUp 0.9s 0.6s forwards;
+}
+.btn-primary{
+  background:var(--dark);color:var(--white);
+  padding:0.85rem 2.2rem;font-size:0.78rem;
+  letter-spacing:0.13em;text-transform:uppercase;
+  text-decoration:none;border-radius:2px;
+  transition:background 0.25s,transform 0.2s;display:inline-block;
+}
+.btn-primary:hover{background:var(--gold);color:var(--dark);transform:translateY(-2px);}
+.btn-outline{
+  border:1px solid var(--border);color:var(--mid);
+  padding:0.85rem 2.2rem;font-size:0.78rem;
+  letter-spacing:0.13em;text-transform:uppercase;
+  text-decoration:none;border-radius:2px;
+  transition:border-color 0.25s,color 0.25s;display:inline-block;
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
 
-      <section class="nodes-section" id="nodes">
-        <div class="section-heading">
-          <p class="eyebrow">Node Management Page</p>
-          <h2>Manage every wireless sensor node from one website screen.</h2>
-        </div>
-        <div class="section-action-row">
-          <button type="button">+ Add New Node</button>
-        </div>
-        <div class="node-table">
-          <div class="node-row table-head">
-            <strong>Node ID</strong><strong>Node Name</strong><strong>Temperature</strong><strong>Humidity</strong><strong>Battery</strong><strong>Signal</strong><strong>Status</strong><strong>Actions</strong>
-          </div>
-          <div class="node-row">
-            <span>N-01</span><span>Gateway Lab</span><span>28.1°C</span><span>54%</span><span>92%</span><span>-42 dBm</span><em class="state-good">Active</em><div><button>Enable Node</button><button>Disable Node</button><button>Restart Node</button><button>Remove Node</button></div>
-          </div>
-          <div class="node-row">
-            <span>N-02</span><span>North Rack</span><span>26.8°C</span><span>58%</span><span>74%</span><span>-61 dBm</span><em class="state-bad">Offline</em><div><button>Enable Node</button><button>Disable Node</button><button>Restart Node</button><button>Remove Node</button></div>
-          </div>
-          <div class="node-row">
-            <span>N-03</span><span>Sensor Bed</span><span>29.3°C</span><span>60%</span><span>31%</span><span>-68 dBm</span><em class="state-good">Active</em><div><button>Enable Node</button><button>Disable Node</button><button>Restart Node</button><button>Remove Node</button></div>
-          </div>
-          <div class="node-row">
-            <span>N-04</span><span>Outdoor Rail</span><span>27.5°C</span><span>52%</span><span>66%</span><span>-74 dBm</span><em class="state-good">Active</em><div><button>Enable Node</button><button>Disable Node</button><button>Restart Node</button><button>Remove Node</button></div>
-          </div>
-        </div>
-      </section>
+/* hero topology visual */
+.hero-visual{
+  position:absolute;right:4rem;top:50%;transform:translateY(-50%);
+  width:420px;opacity:0;animation:fadeIn 1.2s 0.8s forwards;
+  z-index:2;
+}
+.topo-svg{width:100%;height:auto;filter:drop-shadow(0 20px 60px rgba(139,115,64,0.08));}
 
-      <section class="configuration-section" id="configuration">
-        <div class="section-heading">
-          <p class="eyebrow">Configuration Page</p>
-          <h2>Testbed settings for sampling, thresholds, reconnect, and refresh rate.</h2>
-        </div>
-        <form class="config-form">
-          <label>Sampling Interval<select><option>1 sec</option><option selected>5 sec</option><option>10 sec</option></select></label>
-          <label>Temperature Alert Limit<input type="text" value="35°C" /></label>
-          <label>Humidity Alert Limit<input type="text" value="75%" /></label>
-          <label>Power Saving Mode<select><option selected>ON</option><option>OFF</option></select></label>
-          <label>Auto Reconnect<select><option selected>ON</option><option>OFF</option></select></label>
-          <label>Data Refresh Rate<input type="text" value="2 seconds" /></label>
-          <div class="form-actions"><button type="button">Save Settings</button><button type="reset">Reset Default</button></div>
-        </form>
-      </section>
+/* hero metrics strip */
+.hero-metrics{
+  display:flex;gap:3rem;margin-top:3.5rem;padding-top:2.5rem;
+  border-top:0.5px solid var(--border);
+  opacity:0;animation:fadeUp 0.9s 0.75s forwards;
+}
+.hero-metric{}
+.hero-metric-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem;font-weight:600;color:var(--gold);
+  line-height:1;
+}
+.hero-metric-label{
+  font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--mid);margin-top:0.35rem;
+}
 
-      <section class="control-section" id="control">
-        <div class="section-heading">
-          <p class="eyebrow">Programming / Control Page</p>
-          <h2>Device control actions for firmware, reboot, ping, and time sync.</h2>
-        </div>
-        <p class="status-banner">Last Firmware Update Successful</p>
-        <div class="control-grid">
-          <button type="button">Upload Firmware</button>
-          <button type="button">Update Node Software</button>
-          <button type="button">Reboot All Nodes</button>
-          <button type="button">Ping Selected Node</button>
-          <button type="button">Sync Network Time</button>
-        </div>
-      </section>
+/* ── MARQUEE ── */
+.marquee-section{
+  border-top:0.5px solid var(--border);
+  border-bottom:0.5px solid var(--border);
+  padding:0.95rem 0;overflow:hidden;background:var(--gold-pale);
+}
+.marquee-track{display:flex;gap:0;white-space:nowrap;animation:marquee 35s linear infinite;}
+.marquee-item{
+  display:inline-flex;align-items:center;gap:2rem;padding:0 2.5rem;
+  font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:500;
+}
+.marquee-dot{width:4px;height:4px;background:var(--gold-light);border-radius:50%;flex-shrink:0;}
 
-      <section class="topology-section" id="topology">
-        <div class="section-heading">
-          <p class="eyebrow">Network Topology Page</p>
-          <h2>Gateway, nodes, links, coverage, and broken connection overview.</h2>
-        </div>
-        <div class="topology-layout">
-          <pre class="topology-map">Gateway
-  |
-Node 1 ---- Node 2
-  |
-Node 3 ---- Node 4</pre>
-          <div class="topology-stats">
-            <article><span>Connected Nodes</span><strong>9</strong></article>
-            <article><span>Broken Links</span><strong>2</strong></article>
-            <article><span>Coverage Area</span><strong>120 m²</strong></article>
-          </div>
-        </div>
-      </section>
+/* ── COMMON SECTION ── */
+section{padding:6rem 4rem;}
+.max-w{max-width:1200px;margin:0 auto;}
+.section-eyebrow{font-size:0.78rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.4rem,4vw,3.6rem);font-weight:600;
+  line-height:1.1;color:var(--dark);margin-bottom:1rem;
+}
+.section-sub{font-size:1.05rem;font-weight:300;color:var(--mid);line-height:1.75;max-width:560px;}
 
-      <section class="feature-section" id="features">
-        <div class="section-heading">
-          <p class="eyebrow">Website Sections</p>
-          <h2>Everything the interface needs, presented as a polished website.</h2>
-        </div>
-        <div class="feature-grid">
-          <article>
-            <span>01</span>
-            <h3>Configuration Console</h3>
-            <p>Profiles for sampling rate, transmission power, routing mode, experiment duration, and deployment targets.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Programming Flow</h3>
-            <p>Firmware upload, validation states, deployment queue, and progress indicators for node groups.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Network Monitoring</h3>
-            <p>Visual node health, packet delivery ratio, RSSI, battery level, latency, and gateway status.</p>
-          </article>
-          <article>
-            <span>04</span>
-            <h3>Result Analysis</h3>
-            <p>Experiment run summaries, downloadable reports, logs, charts, and comparison-ready metrics.</p>
-          </article>
-        </div>
-      </section>
+/* ── ABSTRACT ── */
+#abstract{background:var(--light);}
+.abstract-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;
+  align-items:center;margin-top:4rem;
+}
+.abstract-text p{
+  font-size:1.05rem;font-weight:300;line-height:1.85;color:var(--mid);margin-bottom:1.5rem;
+}
+.abstract-text strong{color:var(--dark);font-weight:500;}
+.abstract-quote{
+  border-left:2px solid var(--gold);padding-left:1.8rem;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.35rem;font-weight:400;font-style:italic;
+  color:var(--dark);line-height:1.6;margin-top:2rem;
+}
+.stack-cards{display:flex;flex-direction:column;gap:0.8rem;}
+.stack-card{
+  display:flex;align-items:center;gap:1.2rem;
+  padding:1rem 1.4rem;
+  background:var(--white);border:0.5px solid var(--border);border-radius:2px;
+  transition:border-color 0.3s,transform 0.3s;
+}
+.stack-card:hover{border-color:var(--gold-light);transform:translateX(6px);}
+.stack-icon{
+  width:36px;height:36px;background:var(--gold-pale);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1rem;flex-shrink:0;
+}
+.stack-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-weight:600;color:var(--dark);
+}
+.stack-desc{font-size:0.82rem;font-weight:300;color:var(--mid);}
 
-      <section class="evaluation-section" id="evaluation">
-        <div class="section-heading">
-          <p class="eyebrow">Evaluation Coverage</p>
-          <h2>Mapped directly to the required assessment parameters.</h2>
-        </div>
-        <div class="evaluation-grid">
-          <article>
-            <span>01</span>
-            <h3>Functionality &amp; Implementation</h3>
-            <p>The website demonstrates node configuration, firmware programming, remote monitoring, result review, authentication, and hardware access through serial or USB.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Technical Depth &amp; Complexity</h3>
-            <p>The architecture includes Django APIs, React UI structure, WebSocket telemetry, PostgreSQL or MongoDB storage, authentication, data visualization, and physical testbed integration.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Performance &amp; Efficiency</h3>
-            <p>The project tracks energy consumption, latency, packet delivery ratio, throughput, RSSI, battery health, and node uptime to evaluate testbed performance.</p>
-          </article>
-          <article>
-            <span>04</span>
-            <h3>Results &amp; Analysis</h3>
-            <p>Experiment outputs are organized as run summaries, metric tables, trend charts, log review, and clear interpretation of findings.</p>
-          </article>
-          <article>
-            <span>05</span>
-            <h3>Documentation &amp; Presentation</h3>
-            <p>The website presents the abstract, feature scope, architecture, toolchain, workflow, results, and demo evidence in a clean, explainable format.</p>
-          </article>
-        </div>
-      </section>
+/* ── DASHBOARD SECTION ── */
+#dashboard{background:var(--white);}
+.dashboard-header{margin-bottom:3rem;}
+.dashboard-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--border);border:0.5px solid var(--border);
+}
+.dash-card{
+  background:var(--white);padding:2rem 1.8rem;position:relative;
+  transition:background 0.3s;overflow:hidden;
+}
+.dash-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--gold);transform:scaleX(0);transition:transform 0.4s ease;
+}
+.dash-card:hover{background:var(--gold-pale);}
+.dash-card:hover::after{transform:scaleX(1);}
+.dash-label{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid);margin-bottom:0.6rem;}
+.dash-value{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.6rem;font-weight:600;color:var(--dark);line-height:1;
+}
+.dash-value.good{color:var(--gold);}
+.dash-value.warn{color:#c07030;}
+.dash-value.bad{color:#a04040;}
+.dash-sub{font-size:0.82rem;font-weight:300;color:var(--mid);margin-top:0.4rem;}
 
-      <section class="dark-band" id="tools">
-        <div class="section-heading">
-          <p class="eyebrow">Libraries / Tools</p>
-          <h2>Technical stack required for the system.</h2>
-        </div>
-        <div class="tool-grid">
-          <div>
-            <strong>Python / Django</strong>
-            <span>Backend APIs for nodes, experiments, deployments, users, and stored results.</span>
-          </div>
-          <div>
-            <strong>JavaScript / React</strong>
-            <span>Frontend interface for configuration, monitoring, charts, reports, and controls.</span>
-          </div>
-          <div>
-            <strong>WebSockets</strong>
-            <span>Live telemetry channel for node status, packet flow, latency, and gateway updates.</span>
-          </div>
-          <div>
-            <strong>PostgreSQL / MongoDB</strong>
-            <span>Structured experiment data in PostgreSQL, with MongoDB optional for raw sensor payloads.</span>
-          </div>
-          <div>
-            <strong>Hardware interfaces: serial / USB</strong>
-            <span>Gateway connection for node programming, telemetry collection, and firmware deployment.</span>
-          </div>
-          <div>
-            <strong>Data visualization libraries</strong>
-            <span>Charts for PDR, latency, RSSI, throughput, energy use, and experiment comparisons.</span>
-          </div>
-          <div class="tool-wide">
-            <strong>Authentication system</strong>
-            <span>Role-based access for administrators, operators, and viewers to protect remote testbed functions.</span>
-          </div>
-        </div>
-      </section>
+.dashboard-secondary{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:1.5rem;margin-top:1.5rem;
+}
+.dash-wide{
+  background:var(--light);border:0.5px solid var(--border);
+  border-radius:2px;padding:1.8rem;
+}
+.dash-wide-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-weight:600;color:var(--dark);
+  margin-bottom:1.2rem;
+}
+.node-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.7rem 0;border-bottom:0.5px solid var(--border-light);
+  font-size:0.88rem;
+}
+.node-row:last-child{border-bottom:none;}
+.node-id{font-weight:500;color:var(--dark);min-width:48px;}
+.node-name{color:var(--mid);font-weight:300;flex:1;padding:0 0.8rem;}
+.node-status{
+  font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.2rem 0.7rem;border-radius:2px;
+}
+.status-active{background:rgba(139,115,64,0.1);color:var(--gold);}
+.status-offline{background:rgba(160,64,64,0.1);color:#a04040;}
+.status-warn{background:rgba(192,112,48,0.08);color:#c07030;}
+.metric-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.7rem 0;border-bottom:0.5px solid var(--border-light);
+  font-size:0.9rem;
+}
+.metric-row:last-child{border-bottom:none;}
+.metric-name{color:var(--mid);font-weight:300;}
+.metric-val{font-weight:500;color:var(--dark);}
+.metric-val.hi{color:var(--gold);}
 
-      <section class="architecture-section" id="architecture">
-        <div class="section-heading">
-          <p class="eyebrow">Technical Architecture</p>
-          <h2>How the complete WSN interface is designed to work.</h2>
+/* alert rows */
+.alert-item{
+  display:flex;align-items:flex-start;gap:0.8rem;
+  padding:0.7rem 0;border-bottom:0.5px solid var(--border-light);
+  font-size:0.88rem;
+}
+.alert-item:last-child{border-bottom:none;}
+.alert-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.dot-crit{background:#a04040;}
+.dot-warn{background:#c07030;}
+.dot-ok{background:var(--gold);}
+.alert-msg{color:var(--dark);font-weight:400;line-height:1.4;}
+.alert-sev{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);}
+
+/* ── NODES ── */
+#nodes{background:var(--light);}
+.nodes-table-wrap{
+  margin-top:2.5rem;border:0.5px solid var(--border);
+  border-radius:2px;overflow:hidden;
+}
+.nodes-table{width:100%;border-collapse:collapse;font-size:0.9rem;}
+.nodes-table thead{background:var(--dark);}
+.nodes-table thead th{
+  padding:1rem 1.2rem;font-size:0.7rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:rgba(253,251,248,0.6);
+  font-weight:400;text-align:left;
+}
+.nodes-table tbody tr{
+  border-bottom:0.5px solid var(--border-light);
+  transition:background 0.2s;
+}
+.nodes-table tbody tr:last-child{border-bottom:none;}
+.nodes-table tbody tr:hover{background:var(--gold-pale);}
+.nodes-table td{padding:1rem 1.2rem;color:var(--mid);}
+.nodes-table td:first-child{font-weight:500;color:var(--dark);}
+.bat-bar{
+  width:60px;height:6px;background:rgba(139,115,64,0.15);
+  border-radius:3px;display:inline-block;margin-right:0.5rem;
+  vertical-align:middle;position:relative;overflow:hidden;
+}
+.bat-fill{height:100%;border-radius:3px;background:var(--gold);}
+.bat-fill.low{background:#a04040;}
+.bat-fill.med{background:#c07030;}
+
+/* ── CONFIGURATION ── */
+#configuration{background:var(--white);}
+.config-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;}
+.config-group{margin-bottom:2rem;}
+.config-label{
+  font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--mid);margin-bottom:0.8rem;display:block;
+}
+.config-options{display:flex;gap:0.5rem;}
+.config-btn{
+  border:0.5px solid var(--border);background:var(--white);
+  color:var(--mid);padding:0.55rem 1.2rem;
+  font-size:0.82rem;border-radius:2px;cursor:pointer;
+  transition:all 0.2s;font-family:'DM Sans',sans-serif;
+}
+.config-btn.active{background:var(--dark);color:var(--white);border-color:var(--dark);}
+.config-btn:hover:not(.active){border-color:var(--gold);color:var(--gold);}
+.config-toggle{
+  display:flex;gap:0;border:0.5px solid var(--border);border-radius:2px;overflow:hidden;
+}
+.toggle-btn{
+  border:none;background:var(--white);color:var(--mid);
+  padding:0.5rem 1.5rem;font-size:0.82rem;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:all 0.2s;
+}
+.toggle-btn.on{background:var(--gold);color:var(--white);}
+.toggle-btn:hover:not(.on){background:var(--light);}
+.config-slider{
+  -webkit-appearance:none;width:100%;height:4px;
+  background:rgba(139,115,64,0.2);border-radius:2px;outline:none;margin-top:0.5rem;
+}
+.config-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;width:16px;height:16px;
+  border-radius:50%;background:var(--gold);cursor:pointer;
+}
+.config-actions{
+  display:flex;gap:1rem;margin-top:2.5rem;
+  padding-top:2rem;border-top:0.5px solid var(--border);
+}
+.config-save{
+  background:var(--dark);color:var(--white);border:none;
+  padding:0.75rem 2rem;font-size:0.8rem;letter-spacing:0.12em;
+  text-transform:uppercase;border-radius:2px;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:background 0.2s;
+}
+.config-save:hover{background:var(--gold);}
+.config-reset{
+  background:transparent;color:var(--mid);
+  border:0.5px solid var(--border);
+  padding:0.75rem 2rem;font-size:0.8rem;letter-spacing:0.12em;
+  text-transform:uppercase;border-radius:2px;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:all 0.2s;
+}
+.config-reset:hover{border-color:var(--gold);color:var(--gold);}
+.config-panel{
+  background:var(--light);border:0.5px solid var(--border);
+  border-radius:2px;padding:2rem;
+}
+.config-panel-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-weight:600;color:var(--dark);margin-bottom:1.5rem;
+}
+
+/* ── CONTROL ── */
+#control{background:var(--light);}
+.control-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;
+}
+.control-actions-list{display:flex;flex-direction:column;gap:0.8rem;}
+.control-action{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 1.5rem;background:var(--white);
+  border:0.5px solid var(--border);border-radius:2px;
+  cursor:pointer;transition:all 0.25s;
+}
+.control-action:hover{border-color:var(--gold-light);transform:translateX(4px);}
+.control-action-info{}
+.control-action-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-weight:600;color:var(--dark);
+}
+.control-action-desc{font-size:0.82rem;font-weight:300;color:var(--mid);margin-top:0.2rem;}
+.control-action-arrow{color:var(--gold);font-size:1.1rem;transition:transform 0.2s;}
+.control-action:hover .control-action-arrow{transform:translateX(4px);}
+.upload-zone{
+  border:1px dashed rgba(139,115,64,0.4);border-radius:2px;
+  padding:3rem 2rem;text-align:center;background:var(--white);
+  transition:border-color 0.3s,background 0.3s;cursor:pointer;margin-bottom:1.5rem;
+}
+.upload-zone:hover{border-color:var(--gold);background:var(--gold-pale);}
+.upload-icon{font-size:2rem;margin-bottom:0.8rem;}
+.upload-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;font-weight:600;color:var(--dark);margin-bottom:0.4rem;
+}
+.upload-sub{font-size:0.85rem;font-weight:300;color:var(--mid);}
+.firmware-status{
+  display:flex;align-items:center;gap:0.8rem;
+  padding:1rem 1.4rem;background:rgba(139,115,64,0.06);
+  border:0.5px solid rgba(139,115,64,0.25);border-radius:2px;
+  font-size:0.88rem;
+}
+.fw-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);}
+.fw-text{color:var(--dark);font-weight:400;}
+
+/* ── TOPOLOGY ── */
+#topology{background:var(--white);}
+.topo-layout{display:grid;grid-template-columns:2fr 1fr;gap:4rem;margin-top:3rem;align-items:start;}
+.topo-canvas{
+  background:var(--light);border:0.5px solid var(--border);
+  border-radius:2px;padding:2.5rem;min-height:320px;
+  display:flex;align-items:center;justify-content:center;
+}
+.topo-stats{display:flex;flex-direction:column;gap:1rem;}
+.topo-stat{
+  padding:1.5rem;background:var(--light);
+  border:0.5px solid var(--border);border-radius:2px;
+  text-align:center;
+}
+.topo-stat-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.5rem;font-weight:600;color:var(--gold);line-height:1;
+}
+.topo-stat-label{
+  font-size:0.72rem;letter-spacing:0.13em;text-transform:uppercase;
+  color:var(--mid);margin-top:0.4rem;
+}
+
+/* ── FEATURES ── */
+#features{background:var(--light);}
+.features-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;
+  background:var(--border);margin-top:3rem;
+}
+.feature-card{
+  background:var(--white);padding:2.5rem;position:relative;
+  overflow:hidden;transition:background 0.3s;
+}
+.feature-card::before{
+  content:'';position:absolute;bottom:0;left:0;
+  height:2px;width:0;background:var(--gold);transition:width 0.4s ease;
+}
+.feature-card:hover{background:var(--gold-pale);}
+.feature-card:hover::before{width:100%;}
+.feature-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:0.88rem;color:var(--gold);
+  letter-spacing:0.15em;margin-bottom:1rem;
+}
+.feature-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.65rem;font-weight:600;color:var(--dark);
+  margin-bottom:0.75rem;line-height:1.2;
+}
+.feature-desc{font-size:0.93rem;font-weight:300;color:var(--mid);line-height:1.75;}
+.feature-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.4rem;}
+.ftag{
+  font-size:0.68rem;letter-spacing:0.08em;
+  border:0.5px solid var(--border);border-radius:3px;
+  padding:0.28rem 0.6rem;color:var(--mid);background:var(--white);
+  transition:all 0.2s;
+}
+.feature-card:hover .ftag{border-color:rgba(139,115,64,0.35);color:var(--gold);}
+
+/* ── EVALUATION ── */
+#evaluation{background:var(--dark);}
+#evaluation .section-eyebrow{color:var(--gold-light);}
+#evaluation .section-title{color:var(--white);}
+.eval-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1.5px;
+  background:rgba(139,115,64,0.2);margin-top:3.5rem;
+}
+.eval-card{
+  background:var(--charcoal);padding:2rem;position:relative;
+  overflow:hidden;transition:background 0.3s;
+}
+.eval-card::after{
+  content:'';position:absolute;top:0;left:0;width:2px;height:0;
+  background:var(--gold);transition:height 0.4s ease;
+}
+.eval-card:hover{background:#3a3630;}
+.eval-card:hover::after{height:100%;}
+.eval-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:0.88rem;color:var(--gold-light);letter-spacing:0.15em;margin-bottom:1rem;
+}
+.eval-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-weight:600;color:var(--white);margin-bottom:0.75rem;
+}
+.eval-desc{font-size:0.85rem;font-weight:300;color:rgba(253,251,248,0.55);line-height:1.7;}
+
+/* ── ANALYTICS ── */
+#analytics{background:var(--white);}
+.analytics-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;
+  margin-top:3rem;
+}
+.analytics-card{
+  border:0.5px solid var(--border);border-radius:2px;
+  padding:2rem;text-align:center;
+  transition:transform 0.3s,border-color 0.3s;
+}
+.analytics-card:hover{transform:translateY(-5px);border-color:var(--gold-light);}
+.analytics-metric-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.8rem;font-weight:600;color:var(--gold);
+  line-height:1;margin-bottom:0.4rem;
+}
+.analytics-metric-name{
+  font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--mid);margin-bottom:0.8rem;
+}
+.analytics-metric-desc{font-size:0.85rem;font-weight:300;color:var(--mid);line-height:1.6;}
+
+.chart-row{
+  display:grid;grid-template-columns:2fr 1fr;gap:2rem;margin-top:2rem;
+}
+.chart-box{
+  background:var(--light);border:0.5px solid var(--border);
+  border-radius:2px;padding:2rem;
+}
+.chart-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-weight:600;color:var(--dark);margin-bottom:1.5rem;
+}
+.chart-bars{display:flex;align-items:flex-end;gap:1rem;height:120px;}
+.chart-bar-wrap{display:flex;flex-direction:column;align-items:center;gap:0.4rem;flex:1;}
+.chart-bar{
+  width:100%;border-radius:2px 2px 0 0;
+  background:rgba(139,115,64,0.2);transition:background 0.3s;
+  position:relative;
+}
+.chart-bar:hover{background:var(--gold);}
+.bar-label{font-size:0.7rem;color:var(--mid);}
+.chart-legend{display:flex;flex-direction:column;gap:0.8rem;}
+.legend-item{display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;font-weight:300;color:var(--mid);}
+.legend-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);}
+.legend-dot.dim{background:rgba(139,115,64,0.3);}
+
+/* ── WORKFLOW ── */
+#workflow{background:var(--light);}
+.workflow-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  margin-top:4rem;position:relative;
+}
+.workflow-steps::before{
+  content:'';position:absolute;top:1.8rem;left:12%;right:12%;
+  height:0.5px;background:var(--border);
+}
+.workflow-step{padding:0 1.5rem;text-align:center;position:relative;}
+.ws-dot{
+  width:36px;height:36px;border:1.5px solid var(--gold);
+  border-radius:50%;background:var(--white);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.5rem;
+  font-family:'Cormorant Garamond',serif;
+  font-size:0.85rem;font-weight:600;color:var(--gold);
+  position:relative;z-index:2;transition:all 0.3s;
+}
+.workflow-step:hover .ws-dot{background:var(--gold);color:var(--white);}
+.ws-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-weight:600;color:var(--dark);margin-bottom:0.6rem;
+}
+.ws-desc{font-size:0.9rem;font-weight:300;color:var(--mid);line-height:1.65;}
+
+/* ── ARCHITECTURE ── */
+#architecture{background:var(--white);}
+.arch-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:3rem;align-items:start;}
+.arch-stack{display:flex;flex-direction:column;gap:0.8rem;}
+.arch-layer{
+  padding:1.4rem 1.6rem;
+  border:0.5px solid var(--border);border-radius:2px;
+  transition:border-color 0.3s,transform 0.3s;
+  background:var(--white);
+}
+.arch-layer:hover{border-color:var(--gold-light);transform:translateX(6px);}
+.arch-layer-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;font-weight:600;color:var(--dark);margin-bottom:0.3rem;
+}
+.arch-layer-desc{font-size:0.85rem;font-weight:300;color:var(--mid);}
+.arch-notes{display:flex;flex-direction:column;gap:1.5rem;}
+.arch-note{padding-bottom:1.5rem;border-bottom:0.5px solid var(--border-light);}
+.arch-note:last-child{border-bottom:none;}
+.arch-note-title{
+  font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:0.5rem;
+}
+.arch-note-text{font-size:0.95rem;font-weight:300;color:var(--mid);line-height:1.7;}
+
+/* ── TESTING ── */
+#testing{background:var(--light);}
+.testing-table-wrap{
+  margin-top:2.5rem;border:0.5px solid var(--border);
+  border-radius:2px;overflow:hidden;
+}
+.testing-table{width:100%;border-collapse:collapse;font-size:0.9rem;}
+.testing-table thead{background:var(--dark);}
+.testing-table thead th{
+  padding:1rem 1.5rem;font-size:0.7rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:rgba(253,251,248,0.55);
+  font-weight:400;text-align:left;
+}
+.testing-table tbody tr{border-bottom:0.5px solid var(--border-light);transition:background 0.2s;}
+.testing-table tbody tr:last-child{border-bottom:none;}
+.testing-table tbody tr:hover{background:var(--gold-pale);}
+.testing-table td{padding:1rem 1.5rem;color:var(--mid);font-weight:300;}
+.testing-table td:first-child{font-weight:500;color:var(--dark);}
+.test-badge{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.25rem 0.8rem;border-radius:2px;
+}
+.badge-done{background:rgba(139,115,64,0.1);color:var(--gold);}
+.badge-inc{background:rgba(160,64,64,0.08);color:#a04040;}
+
+/* ── VIVA ── */
+#viva{background:var(--dark);}
+#viva .section-eyebrow{color:var(--gold-light);}
+.viva-quote{
+  margin-top:3rem;
+  border:0.5px solid rgba(139,115,64,0.3);border-radius:2px;
+  padding:3rem 4rem;position:relative;
+}
+.viva-quote::before{
+  content:'\201C';
+  position:absolute;top:-1.5rem;left:3rem;
+  font-family:'Cormorant Garamond',serif;
+  font-size:8rem;color:rgba(139,115,64,0.2);line-height:1;
+}
+.viva-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:400;font-style:italic;
+  color:var(--white);line-height:1.55;position:relative;z-index:1;
+}
+.viva-text span{color:var(--gold-light);}
+
+/* ── LOGS ── */
+#logs{background:var(--white);}
+.logs-grid{display:grid;grid-template-columns:2fr 1fr;gap:3rem;margin-top:2.5rem;}
+.log-list{display:flex;flex-direction:column;gap:0;}
+.log-entry{
+  display:flex;align-items:flex-start;gap:1.2rem;
+  padding:1rem 0;border-bottom:0.5px solid var(--border-light);
+}
+.log-entry:last-child{border-bottom:none;}
+.log-time{
+  font-size:0.78rem;letter-spacing:0.06em;color:var(--gold);
+  font-weight:500;min-width:72px;padding-top:2px;
+}
+.log-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0;}
+.log-msg{font-size:0.92rem;color:var(--dark);font-weight:400;line-height:1.5;}
+.log-sub{font-size:0.8rem;font-weight:300;color:var(--mid);}
+.export-panel{
+  background:var(--light);border:0.5px solid var(--border);
+  border-radius:2px;padding:2rem;align-self:start;
+}
+.export-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;font-weight:600;color:var(--dark);margin-bottom:1.5rem;
+}
+.export-btn{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.9rem 1.2rem;background:var(--white);
+  border:0.5px solid var(--border);border-radius:2px;
+  margin-bottom:0.6rem;cursor:pointer;transition:all 0.2s;
+  font-size:0.88rem;color:var(--dark);font-family:'DM Sans',sans-serif;
+}
+.export-btn:hover{border-color:var(--gold);color:var(--gold);}
+.export-btn-arrow{color:var(--gold);}
+
+/* ── AUTH ── */
+#auth{background:var(--light);}
+.auth-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:3rem;align-items:start;}
+.auth-form-card{
+  background:var(--white);border:0.5px solid var(--border);
+  border-radius:2px;padding:2.5rem;max-width:420px;
+}
+.auth-form-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;font-weight:600;color:var(--dark);margin-bottom:0.4rem;
+}
+.auth-form-sub{font-size:0.88rem;font-weight:300;color:var(--mid);margin-bottom:2rem;}
+.form-group{margin-bottom:1.3rem;}
+.form-label{
+  font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--mid);display:block;margin-bottom:0.5rem;
+}
+.form-input{
+  width:100%;padding:0.7rem 1rem;
+  border:0.5px solid var(--border);border-radius:2px;
+  background:var(--white);color:var(--dark);
+  font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:300;
+  outline:none;transition:border-color 0.2s;
+}
+.form-input:focus{border-color:var(--gold);}
+.form-submit{
+  width:100%;background:var(--dark);color:var(--white);border:none;
+  padding:0.8rem;font-size:0.82rem;letter-spacing:0.14em;
+  text-transform:uppercase;border-radius:2px;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:background 0.25s;
+}
+.form-submit:hover{background:var(--gold);}
+.auth-info{}
+.role-list{display:flex;flex-direction:column;gap:0.8rem;margin-top:1.5rem;}
+.role-card{
+  padding:1.2rem 1.5rem;background:var(--white);
+  border:0.5px solid var(--border);border-radius:2px;
+  transition:all 0.25s;
+}
+.role-card:hover{border-color:var(--gold-light);transform:translateX(5px);}
+.role-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;font-weight:600;color:var(--dark);
+}
+.role-desc{font-size:0.82rem;font-weight:300;color:var(--mid);margin-top:0.3rem;}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--dark);border-top:0.5px solid rgba(139,115,64,0.2);
+  padding:3rem 4rem;
+}
+.footer-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1.5rem;
+}
+.footer-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;font-weight:600;color:var(--white);
+}
+.footer-logo span{color:var(--gold);}
+.footer-copy{font-size:0.82rem;font-weight:300;color:rgba(253,251,248,0.4);}
+.footer-links{display:flex;gap:2rem;}
+.footer-links a{
+  font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(253,251,248,0.4);text-decoration:none;transition:color 0.2s;
+}
+.footer-links a:hover{color:var(--gold-light);}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:0.12s;}
+.reveal-delay-2{transition-delay:0.24s;}
+.reveal-delay-3{transition-delay:0.36s;}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.5;}}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  section{padding:4rem 1.5rem;}
+  nav.scrolled{padding:0.7rem 1.5rem;}
+  .hero{padding:7rem 1.5rem 3rem;}
+  .hero-visual{display:none;}
+  .abstract-grid,.config-grid,.control-grid,.arch-grid,.auth-layout,.logs-grid,.topo-layout,.why-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .dashboard-grid{grid-template-columns:repeat(2,1fr);}
+  .features-grid,.eval-grid{grid-template-columns:1fr;}
+  .analytics-grid{grid-template-columns:1fr 1fr;}
+  .workflow-steps{grid-template-columns:1fr 1fr;}
+  .workflow-steps::before{display:none;}
+  .chart-row{grid-template-columns:1fr;}
+  .hero-metrics{flex-wrap:wrap;gap:1.5rem;}
+  footer{padding:2rem 1.5rem;}
+  .footer-inner{flex-direction:column;text-align:center;}
+  .dashboard-secondary{grid-template-columns:1fr;}
+  .viva-quote{padding:2rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#top">WSN <span>Testbed</span></a>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#dashboard">Dashboard</a></li>
+    <li><a href="#nodes">Nodes</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#analytics">Analytics</a></li>
+    <li><a href="#evaluation">Evaluation</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Mahindra University · ECE Project · WSN Lab</p>
+    <h1 class="hero-title">WSN Testbed<br><span class="accent">Management</span><br>Interface</h1>
+    <p class="hero-desc">A comprehensive interface for configuring, programming, monitoring, and analyzing results from a physical wireless sensor network testbed — with remote access and live network visualization.</p>
+    <div class="hero-actions">
+      <a href="#features" class="btn-primary">Explore Features</a>
+      <a href="#architecture" class="btn-outline">View Architecture</a>
+    </div>
+    <div class="hero-metrics">
+      <div class="hero-metric">
+        <div class="hero-metric-val">96.4%</div>
+        <div class="hero-metric-label">Packet Delivery Ratio</div>
+      </div>
+      <div class="hero-metric">
+        <div class="hero-metric-val">24ms</div>
+        <div class="hero-metric-label">Average Latency</div>
+      </div>
+      <div class="hero-metric">
+        <div class="hero-metric-val">38 pkt/s</div>
+        <div class="hero-metric-label">Throughput</div>
+      </div>
+      <div class="hero-metric">
+        <div class="hero-metric-val">12</div>
+        <div class="hero-metric-label">Sensor Nodes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Topology SVG -->
+  <div class="hero-visual">
+    <svg class="topo-svg" viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="glow"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Connection lines -->
+      <line x1="210" y1="70" x2="100" y2="160" stroke="rgba(139,115,64,0.3)" stroke-width="1" stroke-dasharray="6,3"/>
+      <line x1="210" y1="70" x2="210" y2="170" stroke="rgba(139,115,64,0.5)" stroke-width="1.5"/>
+      <line x1="210" y1="70" x2="320" y2="160" stroke="rgba(139,115,64,0.3)" stroke-width="1" stroke-dasharray="6,3"/>
+      <line x1="100" y1="160" x2="60" y2="260" stroke="rgba(139,115,64,0.25)" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="100" y1="160" x2="155" y2="265" stroke="rgba(139,115,64,0.25)" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="210" y1="170" x2="265" y2="265" stroke="rgba(139,115,64,0.25)" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="320" y1="160" x2="360" y2="260" stroke="rgba(160,64,64,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+      <!-- Gateway -->
+      <rect x="180" y="40" width="60" height="50" rx="4" fill="rgba(139,115,64,0.12)" stroke="rgba(139,115,64,0.8)" stroke-width="1.5"/>
+      <text x="210" y="60" font-family="Cormorant Garamond,serif" font-size="10" fill="#8B7340" text-anchor="middle" font-weight="600">GW</text>
+      <text x="210" y="78" font-family="DM Sans,sans-serif" font-size="8" fill="rgba(139,115,64,0.7)" text-anchor="middle">Gateway</text>
+      <!-- Node 1 -->
+      <circle cx="100" cy="160" r="22" fill="rgba(139,115,64,0.1)" stroke="rgba(139,115,64,0.7)" stroke-width="1.2"/>
+      <text x="100" y="164" font-family="Cormorant Garamond,serif" font-size="10" fill="#8B7340" text-anchor="middle" font-weight="600">N1</text>
+      <!-- Node 2 -->
+      <circle cx="210" cy="170" r="22" fill="rgba(139,115,64,0.1)" stroke="rgba(139,115,64,0.7)" stroke-width="1.2"/>
+      <text x="210" y="174" font-family="Cormorant Garamond,serif" font-size="10" fill="#8B7340" text-anchor="middle" font-weight="600">N2</text>
+      <!-- Node 3 (offline) -->
+      <circle cx="320" cy="160" r="22" fill="rgba(160,64,64,0.07)" stroke="rgba(160,64,64,0.5)" stroke-width="1" stroke-dasharray="4,2"/>
+      <text x="320" y="164" font-family="Cormorant Garamond,serif" font-size="10" fill="#a04040" text-anchor="middle" font-weight="600">N3</text>
+      <!-- Leaf nodes -->
+      <circle cx="60" cy="260" r="16" fill="rgba(139,115,64,0.08)" stroke="rgba(139,115,64,0.5)" stroke-width="1"/>
+      <text x="60" y="264" font-family="Cormorant Garamond,serif" font-size="9" fill="#8B7340" text-anchor="middle">N4</text>
+      <circle cx="155" cy="265" r="16" fill="rgba(139,115,64,0.08)" stroke="rgba(139,115,64,0.5)" stroke-width="1"/>
+      <text x="155" y="269" font-family="Cormorant Garamond,serif" font-size="9" fill="#8B7340" text-anchor="middle">N5</text>
+      <circle cx="265" cy="265" r="16" fill="rgba(139,115,64,0.08)" stroke="rgba(139,115,64,0.5)" stroke-width="1"/>
+      <text x="265" y="269" font-family="Cormorant Garamond,serif" font-size="9" fill="#8B7340" text-anchor="middle">N6</text>
+      <circle cx="360" cy="260" r="16" fill="rgba(160,64,64,0.07)" stroke="rgba(160,64,64,0.35)" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="360" y="264" font-family="Cormorant Garamond,serif" font-size="9" fill="#a04040" text-anchor="middle">N7</text>
+      <!-- Labels -->
+      <text x="210" y="310" font-family="DM Sans,sans-serif" font-size="8" fill="rgba(107,101,96,0.6)" text-anchor="middle" letter-spacing="2">NETWORK TOPOLOGY · 9 ACTIVE · 2 OFFLINE</text>
+    </svg>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track" id="marqueeTrack">
+    <div class="marquee-item"><span class="marquee-dot"></span>Python / Django</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>JavaScript / React</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>WebSockets</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>PostgreSQL / MongoDB</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Serial / USB Hardware</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Data Visualization</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Authentication System</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Real-Time Monitoring</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Firmware Deployment</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Role-Based Access</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Energy Analytics</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>RPL Routing</div>
+  </div>
+</div>
+
+<!-- ABSTRACT / OVERVIEW -->
+<section id="abstract">
+  <div class="max-w">
+    <p class="section-eyebrow reveal">Project Abstract</p>
+    <h2 class="section-title reveal reveal-delay-1">Built for clear control<br>over a physical WSN testbed.</h2>
+    <div class="abstract-grid">
+      <div class="abstract-text reveal reveal-delay-2">
+        <p><strong>Abstract:</strong> Creation of a comprehensive user-friendly interface for configuring, programming, monitoring, and analyzing results from a physical WSN testbed. The system provides remote access to testbed functions and visualizes network status.</p>
+        <p>The interface brings together all aspects of wireless sensor network management — from initial node configuration and firmware deployment, through live telemetry monitoring, to detailed experiment result analysis — in a single, coherent web application.</p>
+        <div class="abstract-quote">
+          "This project is a web-based WSN Testbed Management Interface used for configuring, programming, monitoring, controlling, and analyzing wireless sensor nodes in real time."
         </div>
-        <div class="architecture-layout">
-          <div class="architecture-diagram" aria-label="System architecture diagram">
-            <div>
-              <strong>React Website UI</strong>
-              <span>Configuration, charts, logs, access screens</span>
+      </div>
+      <div class="reveal reveal-delay-3">
+        <div class="stack-cards">
+          <div class="stack-card">
+            <div class="stack-icon">🐍</div>
+            <div><div class="stack-name">Python / Django</div><div class="stack-desc">Backend APIs for nodes, experiments, deployments, users, and results</div></div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-icon">⚛️</div>
+            <div><div class="stack-name">JavaScript / React</div><div class="stack-desc">Frontend interface for configuration, monitoring, charts, and controls</div></div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-icon">🔌</div>
+            <div><div class="stack-name">WebSockets</div><div class="stack-desc">Live telemetry channel for node status, packet flow, and gateway updates</div></div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-icon">🗄️</div>
+            <div><div class="stack-name">PostgreSQL / MongoDB</div><div class="stack-desc">Structured experiment data, optional raw sensor payload storage</div></div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-icon">🔧</div>
+            <div><div class="stack-name">Hardware Interfaces</div><div class="stack-desc">Serial/USB for gateway connection, node programming, and telemetry</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard">
+  <div class="max-w">
+    <p class="section-eyebrow reveal">Dashboard Page</p>
+    <h2 class="section-title reveal reveal-delay-1">Live overview for real-time<br>WSN testbed monitoring.</h2>
+    <p class="section-sub reveal reveal-delay-2" style="margin-bottom:2.5rem;">All critical system metrics at a glance — node counts, sensor readings, network health, and active alerts.</p>
+
+    <div class="dashboard-grid reveal reveal-delay-2">
+      <div class="dash-card">
+        <div class="dash-label">Total Nodes</div>
+        <div class="dash-value">12</div>
+        <div class="dash-sub">Deployed in testbed</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-label">Active Nodes</div>
+        <div class="dash-value good">9</div>
+        <div class="dash-sub">Online and reporting</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-label">Offline Nodes</div>
+        <div class="dash-value bad">3</div>
+        <div class="dash-sub">Requires attention</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-label">Network Health</div>
+        <div class="dash-value good">91%</div>
+        <div class="dash-sub">System running normally</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-label">Avg. Temperature</div>
+        <div class="dash-value">27.4°C</div>
+        <div class="dash-sub">Across active nodes</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-label">Avg. Humidity</div>
+        <div class="dash-value">56%</div>
+        <div class="dash-sub">Within normal range</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-label">Active Alerts</div>
+        <div class="dash-value warn">4</div>
+        <div class="dash-sub">2 critical, 2 warnings</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-label">Gateway Status</div>
+        <div class="dash-value good">OK</div>
+        <div class="dash-sub">Connected via USB</div>
+      </div>
+    </div>
+
+    <div class="dashboard-secondary">
+      <div class="dash-wide reveal">
+        <div class="dash-wide-title">Node Status Overview</div>
+        <div class="node-row"><span class="node-id">N-01</span><span class="node-name">Gateway Lab</span><span class="node-status status-active">Active</span></div>
+        <div class="node-row"><span class="node-id">N-02</span><span class="node-name">North Rack</span><span class="node-status status-offline">Offline</span></div>
+        <div class="node-row"><span class="node-id">N-03</span><span class="node-name">Sensor Bed</span><span class="node-status status-active">Active</span></div>
+        <div class="node-row"><span class="node-id">N-04</span><span class="node-name">Outdoor Rail</span><span class="node-status status-warn">Low Battery</span></div>
+        <div class="node-row"><span class="node-id">N-05</span><span class="node-name">East Corner</span><span class="node-status status-active">Active</span></div>
+      </div>
+      <div class="dash-wide reveal reveal-delay-1">
+        <div class="dash-wide-title">Live Metrics</div>
+        <div class="metric-row"><span class="metric-name">Packet Delivery Ratio</span><span class="metric-val hi">96.4%</span></div>
+        <div class="metric-row"><span class="metric-name">Average Latency</span><span class="metric-val hi">24 ms</span></div>
+        <div class="metric-row"><span class="metric-name">Throughput</span><span class="metric-val">38 pkt/s</span></div>
+        <div class="metric-row"><span class="metric-name">Avg. RSSI</span><span class="metric-val">−61 dBm</span></div>
+        <div class="metric-row"><span class="metric-name">Avg. Battery</span><span class="metric-val">66%</span></div>
+      </div>
+      <div class="dash-wide reveal reveal-delay-2">
+        <div class="dash-wide-title">Active Alerts</div>
+        <div class="alert-item"><span class="alert-dot dot-crit"></span><div><div class="alert-msg">Node 2 Offline</div><div class="alert-sev">Critical · Immediate attention</div></div></div>
+        <div class="alert-item"><span class="alert-dot dot-warn"></span><div><div class="alert-msg">High Temperature at Node 1</div><div class="alert-sev">Warning · Threshold exceeded</div></div></div>
+        <div class="alert-item"><span class="alert-dot dot-crit"></span><div><div class="alert-msg">Low Battery at Node 3</div><div class="alert-sev">Critical · Below safe level</div></div></div>
+        <div class="alert-item"><span class="alert-dot dot-warn"></span><div><div class="alert-msg">Weak Signal at Node 4</div><div class="alert-sev">Warning · RSSI below threshold</div></div></div>
+        <div class="alert-item"><span class="alert-dot dot-ok"></span><div><div class="alert-msg">Gateway Connected</div><div class="alert-sev">Normal · Network reachable</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NODES -->
+<section id="nodes">
+  <div class="max-w">
+    <p class="section-eyebrow reveal">Node Management Page</p>
+    <h2 class="section-title reveal reveal-delay-1">Manage every wireless sensor<br>node from one screen.</h2>
+    <div class="nodes-table-wrap reveal reveal-delay-2">
+      <table class="nodes-table">
+        <thead>
+          <tr>
+            <th>Node ID</th>
+            <th>Node Name</th>
+            <th>Temperature</th>
+            <th>Humidity</th>
+            <th>Battery</th>
+            <th>RSSI</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>N-01</td><td>Gateway Lab</td><td>28.1°C</td><td>54%</td>
+            <td><span class="bat-bar"><span class="bat-fill" style="width:92%"></span></span>92%</td>
+            <td>−42 dBm</td><td><span class="node-status status-active">Active</span></td>
+          </tr>
+          <tr>
+            <td>N-02</td><td>North Rack</td><td>—</td><td>—</td>
+            <td><span class="bat-bar"><span class="bat-fill" style="width:74%"></span></span>74%</td>
+            <td>—</td><td><span class="node-status status-offline">Offline</span></td>
+          </tr>
+          <tr>
+            <td>N-03</td><td>Sensor Bed</td><td>29.3°C</td><td>60%</td>
+            <td><span class="bat-bar"><span class="bat-fill low" style="width:31%"></span></span>31%</td>
+            <td>−68 dBm</td><td><span class="node-status status-warn">Low Battery</span></td>
+          </tr>
+          <tr>
+            <td>N-04</td><td>Outdoor Rail</td><td>27.5°C</td><td>52%</td>
+            <td><span class="bat-bar"><span class="bat-fill med" style="width:66%"></span></span>66%</td>
+            <td>−74 dBm</td><td><span class="node-status status-active">Active</span></td>
+          </tr>
+          <tr>
+            <td>N-05</td><td>East Corner</td><td>26.2°C</td><td>48%</td>
+            <td><span class="bat-bar"><span class="bat-fill" style="width:88%"></span></span>88%</td>
+            <td>−55 dBm</td><td><span class="node-status status-active">Active</span></td>
+          </tr>
+          <tr>
+            <td>N-06</td><td>West Pillar</td><td>28.7°C</td><td>57%</td>
+            <td><span class="bat-bar"><span class="bat-fill" style="width:79%"></span></span>79%</td>
+            <td>−63 dBm</td><td><span class="node-status status-active">Active</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIGURATION -->
+<section id="configuration">
+  <div class="max-w">
+    <p class="section-eyebrow reveal">Configuration Page</p>
+    <h2 class="section-title reveal reveal-delay-1">Testbed settings for sampling,<br>thresholds, and power management.</h2>
+    <div class="config-grid">
+      <div class="reveal reveal-delay-2">
+        <div class="config-group">
+          <span class="config-label">Sampling Interval</span>
+          <div class="config-options">
+            <button class="config-btn active">1 sec</button>
+            <button class="config-btn">5 sec</button>
+            <button class="config-btn">10 sec</button>
+            <button class="config-btn">30 sec</button>
+          </div>
+        </div>
+        <div class="config-group">
+          <span class="config-label">Power Saving Mode</span>
+          <div class="config-toggle">
+            <button class="toggle-btn">ON</button>
+            <button class="toggle-btn">OFF</button>
+          </div>
+        </div>
+        <div class="config-group">
+          <span class="config-label">Auto Reconnect</span>
+          <div class="config-toggle">
+            <button class="toggle-btn on">ON</button>
+            <button class="toggle-btn">OFF</button>
+          </div>
+        </div>
+        <div class="config-group">
+          <span class="config-label">Routing Mode</span>
+          <div class="config-options">
+            <button class="config-btn active">RPL</button>
+            <button class="config-btn">Static</button>
+            <button class="config-btn">Mesh</button>
+          </div>
+        </div>
+        <div class="config-group">
+          <span class="config-label">Data Refresh Rate</span>
+          <input type="range" class="config-slider" min="1" max="60" value="10">
+        </div>
+        <div class="config-actions">
+          <button class="config-save">Save Settings</button>
+          <button class="config-reset">Reset to Default</button>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-3">
+        <div class="config-panel">
+          <div class="config-panel-title">Alert Thresholds</div>
+          <div class="config-group">
+            <span class="config-label">Temperature Alert Limit (°C)</span>
+            <input type="range" class="config-slider" min="20" max="50" value="35">
+          </div>
+          <div class="config-group">
+            <span class="config-label">Humidity Alert Limit (%)</span>
+            <input type="range" class="config-slider" min="30" max="90" value="75">
+          </div>
+          <div class="config-group">
+            <span class="config-label">Battery Warning Level (%)</span>
+            <input type="range" class="config-slider" min="5" max="50" value="20">
+          </div>
+          <div class="config-group">
+            <span class="config-label">RSSI Floor (dBm)</span>
+            <input type="range" class="config-slider" min="-100" max="-40" value="-80">
+          </div>
+        </div>
+        <div class="config-panel" style="margin-top:1rem;">
+          <div class="config-panel-title">Transmission Power</div>
+          <div class="config-group">
+            <span class="config-label">TX Power Level</span>
+            <div class="config-options">
+              <button class="config-btn">Low</button>
+              <button class="config-btn active">Medium</button>
+              <button class="config-btn">High</button>
             </div>
-            <i></i>
-            <div>
-              <strong>Django REST API</strong>
-              <span>Nodes, experiments, deployments, results</span>
-            </div>
-            <i></i>
-            <div>
-              <strong>WebSocket Layer</strong>
-              <span>Live telemetry and network status updates</span>
-            </div>
-            <i></i>
-            <div>
-              <strong>Database + Hardware</strong>
-              <span>PostgreSQL/MongoDB and serial/USB adapters</span>
-            </div>
-          </div>
-          <div class="architecture-notes">
-            <article>
-              <h3>Protocols</h3>
-              <p>HTTP APIs handle configuration and reports, while WebSockets support low-latency telemetry updates.</p>
-            </article>
-            <article>
-              <h3>Data Flow</h3>
-              <p>Sensor nodes send readings to the gateway, the backend stores them, and the website visualizes status.</p>
-            </article>
-            <article>
-              <h3>Hardware Boundary</h3>
-              <p>Serial/USB operations are isolated so firmware flashing and telemetry parsing stay maintainable.</p>
-            </article>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <section class="results-section" id="results">
-        <div class="section-heading">
-          <p class="eyebrow">Analytics Page</p>
-          <h2>Charts and metrics for sensor trends, battery drain, PDR, and uptime.</h2>
+<!-- CONTROL -->
+<section id="control">
+  <div class="max-w">
+    <p class="section-eyebrow reveal">Programming / Control Page</p>
+    <h2 class="section-title reveal reveal-delay-1">Device control for firmware,<br>reboot, ping, and time sync.</h2>
+    <div class="control-grid">
+      <div class="reveal reveal-delay-2">
+        <div class="upload-zone">
+          <div class="upload-icon">📦</div>
+          <div class="upload-text">Upload Firmware</div>
+          <div class="upload-sub">Drag and drop .bin file, or click to browse</div>
         </div>
-        <div class="metric-board">
-          <article>
-            <span>Packet Delivery Ratio</span>
-            <strong>96.4%</strong>
-            <p>Stable communication across the testbed during a 45-minute monitoring run.</p>
-          </article>
-          <article>
-            <span>Average Latency</span>
-            <strong>24 ms</strong>
-            <p>Low gateway round-trip delay suitable for near-real-time monitoring.</p>
-          </article>
-          <article>
-            <span>Throughput</span>
-            <strong>38 pkt/s</strong>
-            <p>Measured aggregate packet flow under multi-node sensing conditions.</p>
-          </article>
-          <article>
-            <span>Energy Use</span>
-            <strong>18% drop</strong>
-            <p>Battery usage reduced after lowering sampling rate during idle periods.</p>
-          </article>
+        <div class="firmware-status">
+          <span class="fw-dot"></span>
+          <span class="fw-text">Last firmware update successful — firmware_v4.bin · Cluster A · 100% complete</span>
         </div>
-        <div class="analysis-layout">
-          <article class="chart-card">
-            <h3>Temperature Trend</h3>
-            <div class="bar-chart" aria-label="Packet delivery ratio chart">
-              <span style="height: 72%"><b>Run 1</b></span>
-              <span style="height: 86%"><b>Run 2</b></span>
-              <span style="height: 94%"><b>Run 3</b></span>
-              <span style="height: 82%"><b>Run 4</b></span>
-            </div>
-            <p>Packet delivery improved after node placement and routing adjustments.</p>
-          </article>
-          <article class="analysis-card">
-            <h3>Analytics Included</h3>
-            <ul>
-              <li>Temperature Trend</li>
-              <li>Humidity Trend</li>
-              <li>Battery Drain Graph</li>
-              <li>Packet Delivery Ratio</li>
-              <li>Node Uptime %</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section class="alerts-section" id="alerts">
-        <div class="section-heading">
-          <p class="eyebrow">Alerts Page</p>
-          <h2>Color-coded warnings for node, temperature, battery, and signal issues.</h2>
-        </div>
-        <div class="alert-list">
-          <article class="alert-red"><strong>Node 2 Offline</strong><span>Critical - immediate attention required</span></article>
-          <article class="alert-yellow"><strong>High Temperature at Node 1</strong><span>Warning - threshold exceeded</span></article>
-          <article class="alert-red"><strong>Low Battery at Node 3</strong><span>Critical - battery below safe level</span></article>
-          <article class="alert-yellow"><strong>Weak Signal at Node 4</strong><span>Warning - RSSI is below expected range</span></article>
-          <article class="alert-green"><strong>Gateway Connected</strong><span>Normal - network reachable</span></article>
-        </div>
-      </section>
-
-      <section class="logs-section" id="logs">
-        <div class="section-heading">
-          <p class="eyebrow">Logs / Reports Page</p>
-          <h2>System events, report exports, and downloadable experiment evidence.</h2>
-        </div>
-        <div class="logs-layout">
-          <div class="log-list">
-            <div><span>10:15 AM</span><strong>Node Connected</strong></div>
-            <div><span>10:22 AM</span><strong>Node Restarted</strong></div>
-            <div><span>10:31 AM</span><strong>Sensor Threshold Exceeded</strong></div>
-            <div><span>10:44 AM</span><strong>Firmware Updated</strong></div>
+      </div>
+      <div class="control-actions-list reveal reveal-delay-3">
+        <div class="control-action">
+          <div class="control-action-info">
+            <div class="control-action-name">Update Node Software</div>
+            <div class="control-action-desc">Push latest firmware to selected node group</div>
           </div>
-          <div class="report-actions">
-            <button type="button">Export CSV</button>
-            <button type="button">Export PDF</button>
-            <button type="button">Download Report</button>
+          <span class="control-action-arrow">→</span>
+        </div>
+        <div class="control-action">
+          <div class="control-action-info">
+            <div class="control-action-name">Reboot All Nodes</div>
+            <div class="control-action-desc">Perform a clean restart across the entire testbed</div>
+          </div>
+          <span class="control-action-arrow">→</span>
+        </div>
+        <div class="control-action">
+          <div class="control-action-info">
+            <div class="control-action-name">Ping Selected Node</div>
+            <div class="control-action-desc">Verify connectivity and measure round-trip time</div>
+          </div>
+          <span class="control-action-arrow">→</span>
+        </div>
+        <div class="control-action">
+          <div class="control-action-info">
+            <div class="control-action-name">Sync Network Time</div>
+            <div class="control-action-desc">Synchronize all node clocks to gateway reference</div>
+          </div>
+          <span class="control-action-arrow">→</span>
+        </div>
+        <div class="control-action">
+          <div class="control-action-info">
+            <div class="control-action-name">Deploy Configuration Profile</div>
+            <div class="control-action-desc">Apply saved parameter set to target node cluster</div>
+          </div>
+          <span class="control-action-arrow">→</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPOLOGY -->
+<section id="topology">
+  <div class="max-w">
+    <p class="section-eyebrow reveal">Network Topology Page</p>
+    <h2 class="section-title reveal reveal-delay-1">Gateway, nodes, links, coverage,<br>and broken connection overview.</h2>
+    <div class="topo-layout">
+      <div class="topo-canvas reveal reveal-delay-2">
+        <svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;">
+          <!-- Connections -->
+          <line x1="260" y1="50" x2="120" y2="140" stroke="rgba(139,115,64,0.4)" stroke-width="1.5"/>
+          <line x1="260" y1="50" x2="260" y2="150" stroke="rgba(139,115,64,0.6)" stroke-width="2"/>
+          <line x1="260" y1="50" x2="400" y2="140" stroke="rgba(139,115,64,0.4)" stroke-width="1.5"/>
+          <line x1="120" y1="140" x2="60" y2="240" stroke="rgba(139,115,64,0.3)" stroke-width="1" stroke-dasharray="5,3"/>
+          <line x1="120" y1="140" x2="185" y2="245" stroke="rgba(139,115,64,0.3)" stroke-width="1" stroke-dasharray="5,3"/>
+          <line x1="260" y1="150" x2="330" y2="245" stroke="rgba(139,115,64,0.3)" stroke-width="1" stroke-dasharray="5,3"/>
+          <line x1="400" y1="140" x2="460" y2="240" stroke="rgba(160,64,64,0.4)" stroke-width="1" stroke-dasharray="4,4"/>
+          <line x1="400" y1="140" x2="340" y2="245" stroke="rgba(139,115,64,0.3)" stroke-width="1" stroke-dasharray="5,3"/>
+          <!-- Gateway -->
+          <rect x="225" y="20" width="70" height="52" rx="3" fill="rgba(139,115,64,0.15)" stroke="#8B7340" stroke-width="1.5"/>
+          <text x="260" y="42" font-family="Cormorant Garamond,serif" font-size="12" fill="#8B7340" text-anchor="middle" font-weight="600">GW</text>
+          <text x="260" y="62" font-family="DM Sans,sans-serif" font-size="8" fill="rgba(139,115,64,0.7)" text-anchor="middle">Gateway</text>
+          <!-- Main nodes -->
+          <circle cx="120" cy="140" r="24" fill="rgba(139,115,64,0.1)" stroke="#8B7340" stroke-width="1.5"/>
+          <text x="120" y="144" font-family="Cormorant Garamond,serif" font-size="11" fill="#8B7340" text-anchor="middle" font-weight="600">N1</text>
+          <circle cx="260" cy="150" r="24" fill="rgba(139,115,64,0.1)" stroke="#8B7340" stroke-width="1.5"/>
+          <text x="260" y="154" font-family="Cormorant Garamond,serif" font-size="11" fill="#8B7340" text-anchor="middle" font-weight="600">N2</text>
+          <circle cx="400" cy="140" r="24" fill="rgba(160,64,64,0.08)" stroke="rgba(160,64,64,0.6)" stroke-width="1" stroke-dasharray="5,3"/>
+          <text x="400" y="144" font-family="Cormorant Garamond,serif" font-size="11" fill="#a04040" text-anchor="middle" font-weight="600">N3</text>
+          <!-- Leaf nodes -->
+          <circle cx="60" cy="240" r="17" fill="rgba(139,115,64,0.08)" stroke="rgba(139,115,64,0.5)" stroke-width="1"/>
+          <text x="60" y="244" font-family="Cormorant Garamond,serif" font-size="10" fill="#8B7340" text-anchor="middle">N4</text>
+          <circle cx="185" cy="245" r="17" fill="rgba(139,115,64,0.08)" stroke="rgba(139,115,64,0.5)" stroke-width="1"/>
+          <text x="185" y="249" font-family="Cormorant Garamond,serif" font-size="10" fill="#8B7340" text-anchor="middle">N5</text>
+          <circle cx="330" cy="245" r="17" fill="rgba(139,115,64,0.08)" stroke="rgba(139,115,64,0.5)" stroke-width="1"/>
+          <text x="330" y="249" font-family="Cormorant Garamond,serif" font-size="10" fill="#8B7340" text-anchor="middle">N6</text>
+          <circle cx="460" cy="240" r="17" fill="rgba(160,64,64,0.07)" stroke="rgba(160,64,64,0.4)" stroke-width="1" stroke-dasharray="3,2"/>
+          <text x="460" y="244" font-family="Cormorant Garamond,serif" font-size="10" fill="#a04040" text-anchor="middle">N7</text>
+          <circle cx="340" cy="245" r="17" fill="rgba(139,115,64,0.08)" stroke="rgba(139,115,64,0.5)" stroke-width="1"/>
+          <text x="340" y="249" font-family="Cormorant Garamond,serif" font-size="10" fill="#8B7340" text-anchor="middle">N8</text>
+          <!-- Legend -->
+          <circle cx="20" cy="290" r="4" fill="rgba(139,115,64,0.5)"/><text x="28" y="293" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(107,101,96,0.6)">Active</text>
+          <circle cx="70" cy="290" r="4" fill="rgba(160,64,64,0.5)"/><text x="78" y="293" font-family="DM Sans,sans-serif" font-size="7" fill="rgba(107,101,96,0.6)">Offline</text>
+        </svg>
+      </div>
+      <div class="topo-stats reveal reveal-delay-3">
+        <div class="topo-stat">
+          <div class="topo-stat-val">9</div>
+          <div class="topo-stat-label">Connected Nodes</div>
+        </div>
+        <div class="topo-stat">
+          <div class="topo-stat-val">2</div>
+          <div class="topo-stat-label">Broken Links</div>
+        </div>
+        <div class="topo-stat">
+          <div class="topo-stat-val">120 m²</div>
+          <div class="topo-stat-label">Coverage Area</div>
+        </div>
+        <div class="topo-stat">
+          <div class="topo-stat-val">RPL</div>
+          <div class="topo-stat-label">Routing Protocol</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="max-w">
+    <p class="section-eyebrow reveal">Website Sections</p>
+    <h2 class="section-title reveal reveal-delay-1">Everything the interface needs,<br>presented as a polished system.</h2>
+    <div class="features-grid reveal reveal-delay-2">
+      <div class="feature-card">
+        <div class="feature-num">01</div>
+        <div class="feature-name">Configuration Console</div>
+        <div class="feature-desc">Profiles for sampling rate, transmission power, routing mode, experiment duration, and deployment targets. Persistent settings with reset capability.</div>
+        <div class="feature-tags"><span class="ftag">Sampling Rate</span><span class="ftag">TX Power</span><span class="ftag">RPL</span></div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">02</div>
+        <div class="feature-name">Programming Flow</div>
+        <div class="feature-desc">Firmware upload, bundle validation, deployment queue management, and progress indicators for individual nodes and full cluster groups.</div>
+        <div class="feature-tags"><span class="ftag">Serial/USB</span><span class="ftag">Firmware</span><span class="ftag">Deployment</span></div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">03</div>
+        <div class="feature-name">Network Monitoring</div>
+        <div class="feature-desc">Visual node health indicators, packet delivery ratio, RSSI levels, battery status, gateway latency, and real-time WebSocket telemetry updates.</div>
+        <div class="feature-tags"><span class="ftag">WebSockets</span><span class="ftag">PDR</span><span class="ftag">RSSI</span></div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">04</div>
+        <div class="feature-name">Result Analysis</div>
+        <div class="feature-desc">Experiment run summaries, downloadable reports in CSV and PDF formats, activity logs, trend charts, and comparison-ready performance metrics.</div>
+        <div class="feature-tags"><span class="ftag">Charts</span><span class="ftag">Export</span><span class="ftag">Logs</span></div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">05</div>
+        <div class="feature-name">Authentication & Access</div>
+        <div class="feature-desc">Role-based access control for administrators, operators, and viewers. Secure login protects remote testbed functions and prevents unauthorized changes.</div>
+        <div class="feature-tags"><span class="ftag">RBAC</span><span class="ftag">Secure Login</span><span class="ftag">Roles</span></div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">06</div>
+        <div class="feature-name">Alert Management</div>
+        <div class="feature-desc">Color-coded alert system for critical and warning events — offline nodes, temperature threshold breaches, low battery conditions, and weak signal detection.</div>
+        <div class="feature-tags"><span class="ftag">Critical</span><span class="ftag">Warning</span><span class="ftag">Thresholds</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVALUATION -->
+<section id="evaluation">
+  <div class="max-w">
+    <p class="section-eyebrow reveal">Evaluation Coverage</p>
+    <h2 class="section-title reveal reveal-delay-1">Mapped directly to all<br>required assessment parameters.</h2>
+    <div class="eval-grid reveal reveal-delay-2">
+      <div class="eval-card">
+        <div class="eval-num">01</div>
+        <div class="eval-name">Functionality & Implementation</div>
+        <div class="eval-desc">The interface demonstrates node configuration, firmware programming, remote monitoring, result review, authentication, and hardware access through serial or USB.</div>
+      </div>
+      <div class="eval-card">
+        <div class="eval-num">02</div>
+        <div class="eval-name">Technical Depth & Complexity</div>
+        <div class="eval-desc">The architecture includes Django APIs, React UI, WebSocket telemetry, PostgreSQL or MongoDB storage, authentication, data visualization, and physical testbed integration.</div>
+      </div>
+      <div class="eval-card">
+        <div class="eval-num">03</div>
+        <div class="eval-name">Performance & Efficiency</div>
+        <div class="eval-desc">The project tracks energy consumption, latency, packet delivery ratio, throughput, RSSI, battery health, and node uptime to evaluate testbed performance.</div>
+      </div>
+      <div class="eval-card">
+        <div class="eval-num">04</div>
+        <div class="eval-name">Results & Analysis</div>
+        <div class="eval-desc">Experiment outputs organized as run summaries, metric tables, trend charts, log review, and clear interpretation of findings with export capability.</div>
+      </div>
+      <div class="eval-card">
+        <div class="eval-num">05</div>
+        <div class="eval-name">Documentation & Presentation</div>
+        <div class="eval-desc">The site presents abstract, feature scope, architecture, toolchain, workflow, results, and demo evidence in a clean, explainable format for the viva examination.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANALYTICS -->
+<section id="analytics">
+  <div class="max-w">
+    <p class="section-eyebrow reveal">Analytics Page</p>
+    <h2 class="section-title reveal reveal-delay-1">Charts and metrics for sensor trends,<br>battery drain, PDR, and uptime.</h2>
+    <div class="analytics-grid reveal reveal-delay-2">
+      <div class="analytics-card">
+        <div class="analytics-metric-val">96.4%</div>
+        <div class="analytics-metric-name">Packet Delivery Ratio</div>
+        <div class="analytics-metric-desc">Stable communication across the testbed during a 45-minute monitoring run.</div>
+      </div>
+      <div class="analytics-card">
+        <div class="analytics-metric-val">24 ms</div>
+        <div class="analytics-metric-name">Average Latency</div>
+        <div class="analytics-metric-desc">Low gateway round-trip delay suitable for near-real-time monitoring.</div>
+      </div>
+      <div class="analytics-card">
+        <div class="analytics-metric-val">38 pkt/s</div>
+        <div class="analytics-metric-name">Throughput</div>
+        <div class="analytics-metric-desc">Measured aggregate packet flow under multi-node sensing conditions.</div>
+      </div>
+      <div class="analytics-card">
+        <div class="analytics-metric-val">18%</div>
+        <div class="analytics-metric-name">Energy Reduction</div>
+        <div class="analytics-metric-desc">Battery usage reduced after lowering sampling rate during idle periods.</div>
+      </div>
+    </div>
+
+    <div class="chart-row">
+      <div class="chart-box reveal reveal-delay-1">
+        <div class="chart-title">Temperature Trend — Experiment Runs</div>
+        <div class="chart-bars">
+          <div class="chart-bar-wrap">
+            <div class="chart-bar" style="height:55%"></div>
+            <div class="bar-label">Run 1</div>
+          </div>
+          <div class="chart-bar-wrap">
+            <div class="chart-bar" style="height:70%"></div>
+            <div class="bar-label">Run 2</div>
+          </div>
+          <div class="chart-bar-wrap">
+            <div class="chart-bar" style="height:85%"></div>
+            <div class="bar-label">Run 3</div>
+          </div>
+          <div class="chart-bar-wrap">
+            <div class="chart-bar" style="height:72%"></div>
+            <div class="bar-label">Run 4</div>
+          </div>
+          <div class="chart-bar-wrap">
+            <div class="chart-bar" style="height:90%"></div>
+            <div class="bar-label">Run 5</div>
+          </div>
+          <div class="chart-bar-wrap">
+            <div class="chart-bar" style="height:78%"></div>
+            <div class="bar-label">Run 6</div>
           </div>
         </div>
-      </section>
-
-      <section class="login-section" id="login">
-        <div class="section-heading">
-          <p class="eyebrow">Login Page</p>
-          <h2>Admin Login for protected WSN testbed access.</h2>
+        <p style="font-size:0.82rem;color:var(--mid);font-weight:300;margin-top:1rem;">Packet delivery improved after node placement and routing adjustments in Run 3.</p>
+      </div>
+      <div class="chart-box reveal reveal-delay-2">
+        <div class="chart-title">Analytics Included</div>
+        <div class="chart-legend">
+          <div class="legend-item"><span class="legend-dot"></span>Temperature Trend</div>
+          <div class="legend-item"><span class="legend-dot"></span>Humidity Trend</div>
+          <div class="legend-item"><span class="legend-dot"></span>Battery Drain Graph</div>
+          <div class="legend-item"><span class="legend-dot dim"></span>Packet Delivery Ratio</div>
+          <div class="legend-item"><span class="legend-dot dim"></span>Node Uptime %</div>
+          <div class="legend-item"><span class="legend-dot dim"></span>RSSI Distribution</div>
+          <div class="legend-item"><span class="legend-dot dim"></span>Throughput Over Time</div>
         </div>
-        <form class="login-card">
-          <label>Username<input type="text" value="admin" /></label>
-          <label>Password<input type="password" value="password" /></label>
-          <button type="button">Login</button>
-        </form>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <section class="viva-section">
-        <p class="eyebrow">Best Viva Line</p>
-        <blockquote>
-          This project is a web-based WSN Testbed Management Interface used for configuring, programming, monitoring,
-          controlling, and analyzing wireless sensor nodes in real time.
-        </blockquote>
-      </section>
+<!-- WORKFLOW -->
+<section id="workflow">
+  <div class="max-w">
+    <p class="section-eyebrow reveal" style="text-align:center;">Workflow</p>
+    <h2 class="section-title reveal reveal-delay-1" style="text-align:center;">From setup to<br>verified experiment results.</h2>
+    <div class="workflow-steps">
+      <div class="workflow-step reveal">
+        <div class="ws-dot">01</div>
+        <div class="ws-title">Prepare</div>
+        <div class="ws-desc">Select node groups, set radio parameters, and verify gateway availability before the experiment begins.</div>
+      </div>
+      <div class="workflow-step reveal reveal-delay-1">
+        <div class="ws-dot">02</div>
+        <div class="ws-title">Deploy</div>
+        <div class="ws-desc">Upload firmware and program connected nodes through serial or USB hardware interfaces via the control panel.</div>
+      </div>
+      <div class="workflow-step reveal reveal-delay-2">
+        <div class="ws-dot">03</div>
+        <div class="ws-title">Observe</div>
+        <div class="ws-desc">Stream telemetry over WebSockets and watch live status updates as the experiment runs in real time.</div>
+      </div>
+      <div class="workflow-step reveal reveal-delay-3">
+        <div class="ws-dot">04</div>
+        <div class="ws-title">Analyze</div>
+        <div class="ws-desc">Review activity logs, compare performance graphs across runs, and export reports for documentation.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <section class="demo-section" id="demo">
-        <div class="section-heading">
-          <p class="eyebrow">Functionality Demo</p>
-          <h2>Core features shown as operational website modules.</h2>
+<!-- ARCHITECTURE -->
+<section id="architecture">
+  <div class="max-w">
+    <p class="section-eyebrow reveal">Technical Architecture</p>
+    <h2 class="section-title reveal reveal-delay-1">How the complete WSN interface<br>is designed to work.</h2>
+    <div class="arch-grid">
+      <div class="arch-stack reveal reveal-delay-2">
+        <div class="arch-layer" style="border-left:2px solid var(--gold);">
+          <div class="arch-layer-title">React Website UI</div>
+          <div class="arch-layer-desc">Configuration console, live charts, node management, logs, and access control screens</div>
         </div>
-        <div class="demo-grid">
-          <article>
-            <h3>Configure</h3>
-            <p>Set sampling rate, transmission power, routing mode, node group, and experiment duration.</p>
-            <code>Profile: Energy Sweep - 2 Hz - RPL Routing</code>
-          </article>
-          <article>
-            <h3>Program</h3>
-            <p>Upload firmware, validate the bundle, assign target nodes, and track deployment progress.</p>
-            <code>firmware_v4.bin - Cluster A - 88% complete</code>
-          </article>
-          <article>
-            <h3>Monitor</h3>
-            <p>View live node status, gateway health, battery level, RSSI, PDR, and latency.</p>
-            <code>N-03 - Online - RSSI -61 dBm - Battery 77%</code>
-          </article>
-          <article>
-            <h3>Analyze</h3>
-            <p>Compare experiment runs, review logs, interpret results, and export reports.</p>
-            <code>RUN-2231 - PDR 96.4% - latency 24 ms</code>
-          </article>
+        <div class="arch-layer" style="border-left:2px solid rgba(139,115,64,0.6);">
+          <div class="arch-layer-title">Django REST API</div>
+          <div class="arch-layer-desc">Endpoints for nodes, experiments, deployments, results, users, and authentication</div>
         </div>
-      </section>
+        <div class="arch-layer" style="border-left:2px solid rgba(139,115,64,0.4);">
+          <div class="arch-layer-title">WebSocket Layer</div>
+          <div class="arch-layer-desc">Persistent low-latency channel for live telemetry updates and network status events</div>
+        </div>
+        <div class="arch-layer" style="border-left:2px solid rgba(139,115,64,0.25);">
+          <div class="arch-layer-title">Database Layer</div>
+          <div class="arch-layer-desc">PostgreSQL for structured experiment data; MongoDB optional for raw sensor payloads</div>
+        </div>
+        <div class="arch-layer" style="border-left:2px solid rgba(139,115,64,0.15);">
+          <div class="arch-layer-title">Hardware Boundary</div>
+          <div class="arch-layer-desc">Serial/USB adapters for gateway connection, node programming, and firmware flashing</div>
+        </div>
+      </div>
+      <div class="arch-notes reveal reveal-delay-3">
+        <div class="arch-note">
+          <div class="arch-note-title">Protocols</div>
+          <div class="arch-note-text">HTTP REST APIs handle configuration operations and report retrieval, while WebSockets support low-latency telemetry updates during active experiments.</div>
+        </div>
+        <div class="arch-note">
+          <div class="arch-note-title">Data Flow</div>
+          <div class="arch-note-text">Sensor nodes transmit readings to the gateway via the WSN radio protocol. The backend collects, stores, and processes data, while the interface visualizes current network status and historical results.</div>
+        </div>
+        <div class="arch-note">
+          <div class="arch-note-title">Hardware Boundary</div>
+          <div class="arch-note-text">Serial/USB operations are isolated in a dedicated module so firmware flashing, telemetry parsing, and gateway communication remain maintainable and independent from the web layer.</div>
+        </div>
+        <div class="arch-note">
+          <div class="arch-note-title">Security</div>
+          <div class="arch-note-text">Role-based authentication governs all remote testbed access. Administrator, operator, and viewer roles have distinct permission scopes enforced at the API level.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <section class="testing-section">
-        <div class="section-heading">
-          <p class="eyebrow">Testing Evidence</p>
-          <h2>Validation checklist for the final explanation.</h2>
+<!-- TESTING EVIDENCE -->
+<section id="testing">
+  <div class="max-w">
+    <p class="section-eyebrow reveal">Testing Evidence</p>
+    <h2 class="section-title reveal reveal-delay-1">Validation checklist for<br>the final demonstration.</h2>
+    <div class="testing-table-wrap reveal reveal-delay-2">
+      <table class="testing-table">
+        <thead>
+          <tr>
+            <th>Test Area</th>
+            <th>Expected Evidence</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Node Configuration</td>
+            <td>Accepted profile values and target node selection with persistence</td>
+            <td><span class="test-badge badge-done">✓ Documented</span></td>
+          </tr>
+          <tr>
+            <td>Telemetry Stream</td>
+            <td>Live readings visualized through WebSocket-style updates in real time</td>
+            <td><span class="test-badge badge-done">✓ Documented</span></td>
+          </tr>
+          <tr>
+            <td>Performance Metrics</td>
+            <td>PDR, latency, throughput, energy use, RSSI, and battery measurements</td>
+            <td><span class="test-badge badge-done">✓ Included</span></td>
+          </tr>
+          <tr>
+            <td>Result Analysis</td>
+            <td>Simulation output with interpreted findings, charts, and export</td>
+            <td><span class="test-badge badge-done">✓ Included</span></td>
+          </tr>
+          <tr>
+            <td>Firmware Deployment</td>
+            <td>Upload flow, validation, progress tracking, and completion confirmation</td>
+            <td><span class="test-badge badge-done">✓ Included</span></td>
+          </tr>
+          <tr>
+            <td>Authentication</td>
+            <td>Login screen, role-based access, and protected route behavior</td>
+            <td><span class="test-badge badge-done">✓ Included</span></td>
+          </tr>
+          <tr>
+            <td>Presentation</td>
+            <td>Clear website, architecture diagram, toolchain, workflow, and demo flow</td>
+            <td><span class="test-badge badge-done">✓ Complete</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- VIVA LINE -->
+<section id="viva">
+  <div class="max-w">
+    <p class="section-eyebrow reveal">Best Viva Line</p>
+    <div class="viva-quote reveal reveal-delay-1">
+      <div class="viva-text">
+        "This project is a <span>web-based WSN Testbed Management Interface</span> used for configuring, programming, monitoring, controlling, and analyzing wireless sensor nodes <span>in real time</span>."
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGS -->
+<section id="logs">
+  <div class="max-w">
+    <p class="section-eyebrow reveal">Logs / Reports Page</p>
+    <h2 class="section-title reveal reveal-delay-1">System events, report exports,<br>and downloadable experiment evidence.</h2>
+    <div class="logs-grid">
+      <div class="log-list reveal reveal-delay-2">
+        <div class="log-entry">
+          <span class="log-time">10:15 AM</span>
+          <span class="log-dot" style="background:var(--gold)"></span>
+          <div><div class="log-msg">Node Connected</div><div class="log-sub">N-01 Gateway Lab came online · RSSI −42 dBm</div></div>
         </div>
-        <div class="test-table" role="table" aria-label="Testing checklist">
-          <div role="row">
-            <strong>Test Area</strong>
-            <strong>Expected Evidence</strong>
-            <strong>Status</strong>
+        <div class="log-entry">
+          <span class="log-time">10:22 AM</span>
+          <span class="log-dot" style="background:var(--mid)"></span>
+          <div><div class="log-msg">Node Restarted</div><div class="log-sub">N-05 East Corner · Scheduled reboot completed</div></div>
+        </div>
+        <div class="log-entry">
+          <span class="log-time">10:31 AM</span>
+          <span class="log-dot" style="background:#c07030"></span>
+          <div><div class="log-msg">Sensor Threshold Exceeded</div><div class="log-sub">N-01 temperature reached 33.2°C · Alert triggered</div></div>
+        </div>
+        <div class="log-entry">
+          <span class="log-time">10:44 AM</span>
+          <span class="log-dot" style="background:var(--gold)"></span>
+          <div><div class="log-msg">Firmware Updated</div><div class="log-sub">firmware_v4.bin deployed to Cluster A · 6 nodes</div></div>
+        </div>
+        <div class="log-entry">
+          <span class="log-time">10:58 AM</span>
+          <span class="log-dot" style="background:#a04040"></span>
+          <div><div class="log-msg">Node Offline</div><div class="log-sub">N-02 North Rack · Lost connection after timeout</div></div>
+        </div>
+        <div class="log-entry">
+          <span class="log-time">11:10 AM</span>
+          <span class="log-dot" style="background:var(--gold)"></span>
+          <div><div class="log-msg">Experiment Run Completed</div><div class="log-sub">RUN-2231 · PDR 96.4% · Latency 24 ms · 45 min</div></div>
+        </div>
+      </div>
+      <div class="export-panel reveal reveal-delay-3">
+        <div class="export-title">Export Reports</div>
+        <div class="export-btn">Export as CSV <span class="export-btn-arrow">↓</span></div>
+        <div class="export-btn">Export as PDF <span class="export-btn-arrow">↓</span></div>
+        <div class="export-btn">Download Full Log <span class="export-btn-arrow">↓</span></div>
+        <div class="export-btn">Export Run RUN-2231 <span class="export-btn-arrow">↓</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTH -->
+<section id="auth">
+  <div class="max-w">
+    <p class="section-eyebrow reveal">Login Page</p>
+    <h2 class="section-title reveal reveal-delay-1">Secure admin access for<br>protected testbed functions.</h2>
+    <div class="auth-layout">
+      <div class="reveal reveal-delay-2">
+        <div class="auth-form-card">
+          <div class="auth-form-title">WSN Testbed Login</div>
+          <div class="auth-form-sub">Enter your credentials to access the management interface.</div>
+          <div class="form-group">
+            <label class="form-label">Username</label>
+            <input type="text" class="form-input" placeholder="admin@wsn.lab">
           </div>
-          <div role="row">
-            <span>Node configuration</span>
-            <span>Accepted profile values and target node selection</span>
-            <em>Documented</em>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-input" placeholder="••••••••••">
           </div>
-          <div role="row">
-            <span>Telemetry stream</span>
-            <span>Live readings visualized through WebSocket-style updates</span>
-            <em>Documented</em>
+          <button class="form-submit">Login to Dashboard →</button>
+        </div>
+      </div>
+      <div class="auth-info reveal reveal-delay-3">
+        <p class="section-sub" style="margin-bottom:1.5rem;">Role-based access control governs all remote testbed functions. Three distinct permission levels protect configuration, programming, and monitoring capabilities.</p>
+        <div class="role-list">
+          <div class="role-card">
+            <div class="role-name">Administrator</div>
+            <div class="role-desc">Full access — configuration, firmware deployment, node control, user management, and system settings.</div>
           </div>
-          <div role="row">
-            <span>Performance metrics</span>
-            <span>PDR, latency, throughput, energy use, RSSI, battery</span>
-            <em>Included</em>
+          <div class="role-card">
+            <div class="role-name">Operator</div>
+            <div class="role-desc">Operational access — monitoring, telemetry review, alert management, and report export.</div>
           </div>
-          <div role="row">
-            <span>Result analysis</span>
-            <span>Simulation output and interpreted findings</span>
-            <em>Included</em>
-          </div>
-          <div role="row">
-            <span>Presentation</span>
-            <span>Clear website, diagram, toolchain, workflow, and demo flow</span>
-            <em>Complete</em>
+          <div class="role-card">
+            <div class="role-name">Viewer</div>
+            <div class="role-desc">Read-only access — dashboard overview, live node status, and historical data browsing.</div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <section class="workflow-section" id="workflow">
-        <div class="section-heading">
-          <p class="eyebrow">Workflow</p>
-          <h2>From setup to verified experiment results.</h2>
-        </div>
-        <div class="timeline">
-          <article>
-            <span>1</span>
-            <h3>Prepare</h3>
-            <p>Select node groups, set radio parameters, and check gateway availability.</p>
-          </article>
-          <article>
-            <span>2</span>
-            <h3>Deploy</h3>
-            <p>Upload firmware and program connected nodes through serial or USB hardware interfaces.</p>
-          </article>
-          <article>
-            <span>3</span>
-            <h3>Observe</h3>
-            <p>Stream telemetry over WebSockets and watch status updates as the experiment runs.</p>
-          </article>
-          <article>
-            <span>4</span>
-            <h3>Analyze</h3>
-            <p>Review logs, compare graphs, and export reports for documentation.</p>
-          </article>
-        </div>
-      </section>
+<!-- CONTACT -->
+<section id="contact" style="background:var(--dark);">
+  <div class="max-w">
+    <p class="section-eyebrow reveal" style="color:var(--gold-light);">Interface Goal</p>
+    <h2 class="section-title reveal reveal-delay-1" style="color:var(--white);">Remote testbed access with<br>a research-ready presentation.</h2>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:700px;" class="reveal reveal-delay-2">
+      <div style="padding:2rem;border:0.5px solid rgba(139,115,64,0.25);border-radius:2px;">
+        <div style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(253,251,248,0.4);margin-bottom:0.6rem;">Institution</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:var(--white);">Mahindra University</div>
+        <div style="font-size:0.85rem;font-weight:300;color:rgba(253,251,248,0.4);margin-top:0.2rem;">Hyderabad, India</div>
+      </div>
+      <div style="padding:2rem;border:0.5px solid rgba(139,115,64,0.25);border-radius:2px;">
+        <div style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(253,251,248,0.4);margin-bottom:0.6rem;">Stack</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:var(--white);">Django + React</div>
+        <div style="font-size:0.85rem;font-weight:300;color:rgba(253,251,248,0.4);margin-top:0.2rem;">WebSockets · PostgreSQL · Serial/USB</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <section class="contact-section" id="contact">
-        <div>
-          <p class="eyebrow">Interface Goal</p>
-          <h2>Remote testbed access with a consistent, research-ready presentation.</h2>
-        </div>
-        <a class="btn-primary" href="#top">Back to Top</a>
-      </section>
-    </main>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">WSN <span>Testbed</span></div>
+    <p class="footer-copy">© 2025 WSN Testbed Management Interface · Mahindra University, Hyderabad</p>
+    <div class="footer-links">
+      <a href="#top">Back to Top</a>
+    </div>
+  </div>
+</footer>
 
-    <footer>
-      <p>Wireless Sensor Network Testbed Management Interface</p>
-      <span>Developed for Real-Time Monitoring, Control and Analysis</span>
-    </footer>
+<script>
+// NAV SCROLL
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
 
-    <script src="script.js"></script>
-  </body>
+// SCROLL REVEAL
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+reveals.forEach(r => observer.observe(r));
+
+// MARQUEE DUPLICATE
+const track = document.getElementById('marqueeTrack');
+track.innerHTML += track.innerHTML;
+
+// CONFIG BUTTONS
+document.querySelectorAll('.config-options').forEach(group => {
+  group.querySelectorAll('.config-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      group.querySelectorAll('.config-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+});
+
+// TOGGLE BUTTONS
+document.querySelectorAll('.config-toggle').forEach(toggle => {
+  toggle.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      toggle.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+    });
+  });
+});
+
+// SAVE BUTTON FEEDBACK
+document.querySelectorAll('.config-save').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const orig = btn.textContent;
+    btn.textContent = 'Settings Saved ✓';
+    btn.style.background = 'var(--gold)';
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.style.background = '';
+    }, 2000);
+  });
+});
+
+// CHART BARS ANIMATION
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.chart-bar').forEach((bar, i) => {
+        const h = bar.style.height;
+        bar.style.height = '0%';
+        bar.style.transition = `height 0.6s ease ${i * 0.1}s`;
+        setTimeout(() => { bar.style.height = h; }, 50);
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.chart-bars').forEach(g => barObs.observe(g));
+
+// CONTROL ACTIONS
+document.querySelectorAll('.control-action').forEach(action => {
+  action.addEventListener('click', () => {
+    const arrow = action.querySelector('.control-action-arrow');
+    arrow.style.transform = 'translateX(8px)';
+    action.style.borderColor = 'var(--gold-light)';
+    setTimeout(() => {
+      arrow.style.transform = '';
+      action.style.borderColor = '';
+    }, 600);
+  });
+});
+
+// EXPORT BUTTONS
+document.querySelectorAll('.export-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const orig = btn.innerHTML;
+    btn.innerHTML = 'Preparing download… ✓';
+    btn.style.color = 'var(--gold)';
+    setTimeout(() => {
+      btn.innerHTML = orig;
+      btn.style.color = '';
+    }, 1800);
+  });
+});
+</script>
+</body>
 </html>
