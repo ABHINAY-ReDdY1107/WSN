@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="WSN Testbed Management Interface website" />
+    <title>WSN Testbed Management Interface</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="#top"><span>WSN</span> Testbed</a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="#overview">Overview</a>
+        <a href="#features">Features</a>
+        <a href="#tools">Tools</a>
+        <a href="#evaluation">Evaluation</a>
+        <a href="#results">Results</a>
+        <a href="#workflow">Workflow</a>
+        <a class="nav-cta" href="#contact">Contact</a>
+      </nav>
+      <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero" id="overview">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Wireless sensor networks - Remote laboratory interface</p>
+          <h1>WSN Testbed <span>Management Interface</span></h1>
+          <p class="hero-copy">
+            A comprehensive website concept for configuring, programming, monitoring, and analyzing results from a
+            physical WSN testbed with remote access and clear network status visualization.
+          </p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="#features">Explore Features</a>
+            <a class="btn-outline" href="#tools">View Toolchain</a>
+          </div>
+        </div>
+        <figure class="network-visual" aria-label="Wireless sensor network visualization">
+          <svg viewBox="0 0 620 440" role="img">
+            <defs>
+              <linearGradient id="panelFill" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#FDFBF8" />
+                <stop offset="1" stop-color="#F5EDD8" />
+              </linearGradient>
+            </defs>
+            <rect x="22" y="22" width="576" height="396" rx="3" fill="url(#panelFill)" stroke="rgba(139,115,64,.24)" />
+            <path d="M116 310 C 210 190, 334 176, 488 94" stroke="#C4A96D" stroke-width="2" fill="none" />
+            <path d="M116 310 C 230 340, 340 334, 486 266" stroke="#8B7340" stroke-width="2" fill="none" />
+            <path d="M184 142 C 284 236, 386 248, 486 266" stroke="rgba(45,42,36,.35)" stroke-width="2" fill="none" />
+            <g class="node gateway">
+              <circle cx="116" cy="310" r="34" />
+              <text x="116" y="316">GW</text>
+            </g>
+            <g class="node">
+              <circle cx="184" cy="142" r="26" />
+              <text x="184" y="148">N1</text>
+            </g>
+            <g class="node">
+              <circle cx="314" cy="224" r="26" />
+              <text x="314" y="230">N2</text>
+            </g>
+            <g class="node warning">
+              <circle cx="486" cy="94" r="26" />
+              <text x="486" y="100">N3</text>
+            </g>
+            <g class="node">
+              <circle cx="486" cy="266" r="26" />
+              <text x="486" y="272">N4</text>
+            </g>
+            <g class="metric-chip">
+              <rect x="64" y="58" width="150" height="48" rx="2" />
+              <text x="82" y="88">PDR 96.4%</text>
+            </g>
+            <g class="metric-chip">
+              <rect x="364" y="338" width="162" height="48" rx="2" />
+              <text x="382" y="368">Latency 24ms</text>
+            </g>
+          </svg>
+        </figure>
+      </section>
+
+      <section class="marquee" aria-label="System capabilities">
+        <div class="marquee-track">
+          <span>Configure Nodes</span>
+          <i></i>
+          <span>Program Firmware</span>
+          <i></i>
+          <span>Monitor Telemetry</span>
+          <i></i>
+          <span>Analyze Results</span>
+          <i></i>
+          <span>Remote Access</span>
+          <i></i>
+          <span>Network Status</span>
+        </div>
+      </section>
+
+      <section class="intro-section">
+        <div class="section-heading">
+          <p class="eyebrow">Project Abstract</p>
+          <h2>Built for clear control over a physical WSN testbed.</h2>
+        </div>
+        <p class="abstract-text">
+          <strong>Abstract:</strong> Creation of a comprehensive user-friendly interface for configuring, programming,
+          monitoring, and analyzing results from a physical WSN testbed. The system provides remote access to testbed
+          functions and visualizes network status.
+        </p>
+      </section>
+
+      <section class="feature-section" id="features">
+        <div class="section-heading">
+          <p class="eyebrow">Website Sections</p>
+          <h2>Everything the interface needs, presented as a polished website.</h2>
+        </div>
+        <div class="feature-grid">
+          <article>
+            <span>01</span>
+            <h3>Configuration Console</h3>
+            <p>Profiles for sampling rate, transmission power, routing mode, experiment duration, and deployment targets.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Programming Flow</h3>
+            <p>Firmware upload, validation states, deployment queue, and progress indicators for node groups.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Network Monitoring</h3>
+            <p>Visual node health, packet delivery ratio, RSSI, battery level, latency, and gateway status.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Result Analysis</h3>
+            <p>Experiment run summaries, downloadable reports, logs, charts, and comparison-ready metrics.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="evaluation-section" id="evaluation">
+        <div class="section-heading">
+          <p class="eyebrow">Evaluation Coverage</p>
+          <h2>Mapped directly to the required assessment parameters.</h2>
+        </div>
+        <div class="evaluation-grid">
+          <article>
+            <span>01</span>
+            <h3>Functionality &amp; Implementation</h3>
+            <p>The website demonstrates node configuration, firmware programming, remote monitoring, result review, authentication, and hardware access through serial or USB.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Technical Depth &amp; Complexity</h3>
+            <p>The architecture includes Django APIs, React UI structure, WebSocket telemetry, PostgreSQL or MongoDB storage, authentication, data visualization, and physical testbed integration.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Performance &amp; Efficiency</h3>
+            <p>The project tracks energy consumption, latency, packet delivery ratio, throughput, RSSI, battery health, and node uptime to evaluate testbed performance.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Results &amp; Analysis</h3>
+            <p>Experiment outputs are organized as run summaries, metric tables, trend charts, log review, and clear interpretation of findings.</p>
+          </article>
+          <article>
+            <span>05</span>
+            <h3>Documentation &amp; Presentation</h3>
+            <p>The website presents the abstract, feature scope, architecture, toolchain, workflow, results, and demo evidence in a clean, explainable format.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="dark-band" id="tools">
+        <div class="section-heading">
+          <p class="eyebrow">Libraries / Tools</p>
+          <h2>Technical stack required for the system.</h2>
+        </div>
+        <div class="tool-grid">
+          <div>
+            <strong>Python / Django</strong>
+            <span>Backend APIs for nodes, experiments, deployments, users, and stored results.</span>
+          </div>
+          <div>
+            <strong>JavaScript / React</strong>
+            <span>Frontend interface for configuration, monitoring, charts, reports, and controls.</span>
+          </div>
+          <div>
+            <strong>WebSockets</strong>
+            <span>Live telemetry channel for node status, packet flow, latency, and gateway updates.</span>
+          </div>
+          <div>
+            <strong>PostgreSQL / MongoDB</strong>
+            <span>Structured experiment data in PostgreSQL, with MongoDB optional for raw sensor payloads.</span>
+          </div>
+          <div>
+            <strong>Hardware interfaces: serial / USB</strong>
+            <span>Gateway connection for node programming, telemetry collection, and firmware deployment.</span>
+          </div>
+          <div>
+            <strong>Data visualization libraries</strong>
+            <span>Charts for PDR, latency, RSSI, throughput, energy use, and experiment comparisons.</span>
+          </div>
+          <div class="tool-wide">
+            <strong>Authentication system</strong>
+            <span>Role-based access for administrators, operators, and viewers to protect remote testbed functions.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="architecture-section" id="architecture">
+        <div class="section-heading">
+          <p class="eyebrow">Technical Architecture</p>
+          <h2>How the complete WSN interface is designed to work.</h2>
+        </div>
+        <div class="architecture-layout">
+          <div class="architecture-diagram" aria-label="System architecture diagram">
+            <div>
+              <strong>React Website UI</strong>
+              <span>Configuration, charts, logs, access screens</span>
+            </div>
+            <i></i>
+            <div>
+              <strong>Django REST API</strong>
+              <span>Nodes, experiments, deployments, results</span>
+            </div>
+            <i></i>
+            <div>
+              <strong>WebSocket Layer</strong>
+              <span>Live telemetry and network status updates</span>
+            </div>
+            <i></i>
+            <div>
+              <strong>Database + Hardware</strong>
+              <span>PostgreSQL/MongoDB and serial/USB adapters</span>
+            </div>
+          </div>
+          <div class="architecture-notes">
+            <article>
+              <h3>Protocols</h3>
+              <p>HTTP APIs handle configuration and reports, while WebSockets support low-latency telemetry updates.</p>
+            </article>
+            <article>
+              <h3>Data Flow</h3>
+              <p>Sensor nodes send readings to the gateway, the backend stores them, and the website visualizes status.</p>
+            </article>
+            <article>
+              <h3>Hardware Boundary</h3>
+              <p>Serial/USB operations are isolated so firmware flashing and telemetry parsing stay maintainable.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="results-section" id="results">
+        <div class="section-heading">
+          <p class="eyebrow">Performance Results</p>
+          <h2>Sample metrics and analysis prepared for project evaluation.</h2>
+        </div>
+        <div class="metric-board">
+          <article>
+            <span>Packet Delivery Ratio</span>
+            <strong>96.4%</strong>
+            <p>Stable communication across the testbed during a 45-minute monitoring run.</p>
+          </article>
+          <article>
+            <span>Average Latency</span>
+            <strong>24 ms</strong>
+            <p>Low gateway round-trip delay suitable for near-real-time monitoring.</p>
+          </article>
+          <article>
+            <span>Throughput</span>
+            <strong>38 pkt/s</strong>
+            <p>Measured aggregate packet flow under multi-node sensing conditions.</p>
+          </article>
+          <article>
+            <span>Energy Use</span>
+            <strong>18% drop</strong>
+            <p>Battery usage reduced after lowering sampling rate during idle periods.</p>
+          </article>
+        </div>
+        <div class="analysis-layout">
+          <article class="chart-card">
+            <h3>Simulation Output</h3>
+            <div class="bar-chart" aria-label="Packet delivery ratio chart">
+              <span style="height: 72%"><b>Run 1</b></span>
+              <span style="height: 86%"><b>Run 2</b></span>
+              <span style="height: 94%"><b>Run 3</b></span>
+              <span style="height: 82%"><b>Run 4</b></span>
+            </div>
+            <p>Packet delivery improved after node placement and routing adjustments.</p>
+          </article>
+          <article class="analysis-card">
+            <h3>Findings Interpreted</h3>
+            <ul>
+              <li>RSSI became weaker as the mobile node moved farther from the gateway.</li>
+              <li>Latency stayed below 30 ms for most stable links.</li>
+              <li>Low-battery nodes had a higher chance of packet loss.</li>
+              <li>WebSocket telemetry is appropriate for continuous network updates.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="demo-section" id="demo">
+        <div class="section-heading">
+          <p class="eyebrow">Functionality Demo</p>
+          <h2>Core features shown as operational website modules.</h2>
+        </div>
+        <div class="demo-grid">
+          <article>
+            <h3>Configure</h3>
+            <p>Set sampling rate, transmission power, routing mode, node group, and experiment duration.</p>
+            <code>Profile: Energy Sweep - 2 Hz - RPL Routing</code>
+          </article>
+          <article>
+            <h3>Program</h3>
+            <p>Upload firmware, validate the bundle, assign target nodes, and track deployment progress.</p>
+            <code>firmware_v4.bin - Cluster A - 88% complete</code>
+          </article>
+          <article>
+            <h3>Monitor</h3>
+            <p>View live node status, gateway health, battery level, RSSI, PDR, and latency.</p>
+            <code>N-03 - Online - RSSI -61 dBm - Battery 77%</code>
+          </article>
+          <article>
+            <h3>Analyze</h3>
+            <p>Compare experiment runs, review logs, interpret results, and export reports.</p>
+            <code>RUN-2231 - PDR 96.4% - latency 24 ms</code>
+          </article>
+        </div>
+      </section>
+
+      <section class="testing-section">
+        <div class="section-heading">
+          <p class="eyebrow">Testing Evidence</p>
+          <h2>Validation checklist for the final explanation.</h2>
+        </div>
+        <div class="test-table" role="table" aria-label="Testing checklist">
+          <div role="row">
+            <strong>Test Area</strong>
+            <strong>Expected Evidence</strong>
+            <strong>Status</strong>
+          </div>
+          <div role="row">
+            <span>Node configuration</span>
+            <span>Accepted profile values and target node selection</span>
+            <em>Documented</em>
+          </div>
+          <div role="row">
+            <span>Telemetry stream</span>
+            <span>Live readings visualized through WebSocket-style updates</span>
+            <em>Documented</em>
+          </div>
+          <div role="row">
+            <span>Performance metrics</span>
+            <span>PDR, latency, throughput, energy use, RSSI, battery</span>
+            <em>Included</em>
+          </div>
+          <div role="row">
+            <span>Result analysis</span>
+            <span>Simulation output and interpreted findings</span>
+            <em>Included</em>
+          </div>
+          <div role="row">
+            <span>Presentation</span>
+            <span>Clear website, diagram, toolchain, workflow, and demo flow</span>
+            <em>Complete</em>
+          </div>
+        </div>
+      </section>
+
+      <section class="workflow-section" id="workflow">
+        <div class="section-heading">
+          <p class="eyebrow">Workflow</p>
+          <h2>From setup to verified experiment results.</h2>
+        </div>
+        <div class="timeline">
+          <article>
+            <span>1</span>
+            <h3>Prepare</h3>
+            <p>Select node groups, set radio parameters, and check gateway availability.</p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>Deploy</h3>
+            <p>Upload firmware and program connected nodes through serial or USB hardware interfaces.</p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Observe</h3>
+            <p>Stream telemetry over WebSockets and watch status updates as the experiment runs.</p>
+          </article>
+          <article>
+            <span>4</span>
+            <h3>Analyze</h3>
+            <p>Review logs, compare graphs, and export reports for documentation.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <div>
+          <p class="eyebrow">Interface Goal</p>
+          <h2>Remote testbed access with a consistent, research-ready presentation.</h2>
+        </div>
+        <a class="btn-primary" href="#top">Back to Top</a>
+      </section>
+    </main>
+
+    <footer>
+      <p>WSN Testbed Management Interface</p>
+      <span>Configure - Program - Monitor - Analyze</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
