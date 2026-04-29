@@ -15,11 +15,12 @@
       <a class="brand" href="#top"><span>WSN</span> Testbed</a>
       <nav class="main-nav" aria-label="Primary navigation">
         <a href="#overview">Overview</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#nodes">Nodes</a>
+        <a href="#configuration">Config</a>
+        <a href="#control">Control</a>
         <a href="#features">Features</a>
-        <a href="#tools">Tools</a>
-        <a href="#evaluation">Evaluation</a>
         <a href="#results">Results</a>
-        <a href="#workflow">Workflow</a>
         <a class="nav-cta" href="#contact">Contact</a>
       </nav>
       <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false">
@@ -113,6 +114,100 @@
           monitoring, and analyzing results from a physical WSN testbed. The system provides remote access to testbed
           functions and visualizes network status.
         </p>
+      </section>
+
+      <section class="dashboard-section" id="dashboard">
+        <div class="section-heading">
+          <p class="eyebrow">Dashboard Page</p>
+          <h2>Live overview for real-time WSN testbed monitoring.</h2>
+        </div>
+        <div class="status-banner">System Running Normally</div>
+        <div class="dashboard-cards">
+          <article><span>Total Nodes</span><strong>12</strong></article>
+          <article><span>Active Nodes</span><strong>9</strong></article>
+          <article><span>Offline Nodes</span><strong>3</strong></article>
+          <article><span>Average Temperature</span><strong>27.4°C</strong></article>
+          <article><span>Average Humidity</span><strong>56%</strong></article>
+          <article><span>Alerts Count</span><strong>4</strong></article>
+          <article><span>Network Health</span><strong>91%</strong></article>
+        </div>
+      </section>
+
+      <section class="nodes-section" id="nodes">
+        <div class="section-heading">
+          <p class="eyebrow">Node Management Page</p>
+          <h2>Manage every wireless sensor node from one website screen.</h2>
+        </div>
+        <div class="section-action-row">
+          <button type="button">+ Add New Node</button>
+        </div>
+        <div class="node-table">
+          <div class="node-row table-head">
+            <strong>Node ID</strong><strong>Node Name</strong><strong>Temperature</strong><strong>Humidity</strong><strong>Battery</strong><strong>Signal</strong><strong>Status</strong><strong>Actions</strong>
+          </div>
+          <div class="node-row">
+            <span>N-01</span><span>Gateway Lab</span><span>28.1°C</span><span>54%</span><span>92%</span><span>-42 dBm</span><em class="state-good">Active</em><div><button>Enable Node</button><button>Disable Node</button><button>Restart Node</button><button>Remove Node</button></div>
+          </div>
+          <div class="node-row">
+            <span>N-02</span><span>North Rack</span><span>26.8°C</span><span>58%</span><span>74%</span><span>-61 dBm</span><em class="state-bad">Offline</em><div><button>Enable Node</button><button>Disable Node</button><button>Restart Node</button><button>Remove Node</button></div>
+          </div>
+          <div class="node-row">
+            <span>N-03</span><span>Sensor Bed</span><span>29.3°C</span><span>60%</span><span>31%</span><span>-68 dBm</span><em class="state-good">Active</em><div><button>Enable Node</button><button>Disable Node</button><button>Restart Node</button><button>Remove Node</button></div>
+          </div>
+          <div class="node-row">
+            <span>N-04</span><span>Outdoor Rail</span><span>27.5°C</span><span>52%</span><span>66%</span><span>-74 dBm</span><em class="state-good">Active</em><div><button>Enable Node</button><button>Disable Node</button><button>Restart Node</button><button>Remove Node</button></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="configuration-section" id="configuration">
+        <div class="section-heading">
+          <p class="eyebrow">Configuration Page</p>
+          <h2>Testbed settings for sampling, thresholds, reconnect, and refresh rate.</h2>
+        </div>
+        <form class="config-form">
+          <label>Sampling Interval<select><option>1 sec</option><option selected>5 sec</option><option>10 sec</option></select></label>
+          <label>Temperature Alert Limit<input type="text" value="35°C" /></label>
+          <label>Humidity Alert Limit<input type="text" value="75%" /></label>
+          <label>Power Saving Mode<select><option selected>ON</option><option>OFF</option></select></label>
+          <label>Auto Reconnect<select><option selected>ON</option><option>OFF</option></select></label>
+          <label>Data Refresh Rate<input type="text" value="2 seconds" /></label>
+          <div class="form-actions"><button type="button">Save Settings</button><button type="reset">Reset Default</button></div>
+        </form>
+      </section>
+
+      <section class="control-section" id="control">
+        <div class="section-heading">
+          <p class="eyebrow">Programming / Control Page</p>
+          <h2>Device control actions for firmware, reboot, ping, and time sync.</h2>
+        </div>
+        <p class="status-banner">Last Firmware Update Successful</p>
+        <div class="control-grid">
+          <button type="button">Upload Firmware</button>
+          <button type="button">Update Node Software</button>
+          <button type="button">Reboot All Nodes</button>
+          <button type="button">Ping Selected Node</button>
+          <button type="button">Sync Network Time</button>
+        </div>
+      </section>
+
+      <section class="topology-section" id="topology">
+        <div class="section-heading">
+          <p class="eyebrow">Network Topology Page</p>
+          <h2>Gateway, nodes, links, coverage, and broken connection overview.</h2>
+        </div>
+        <div class="topology-layout">
+          <pre class="topology-map">Gateway
+  |
+Node 1 ---- Node 2
+  |
+Node 3 ---- Node 4</pre>
+          <div class="topology-stats">
+            <article><span>Connected Nodes</span><strong>9</strong></article>
+            <article><span>Broken Links</span><strong>2</strong></article>
+            <article><span>Coverage Area</span><strong>120 m²</strong></article>
+          </div>
+        </div>
       </section>
 
       <section class="feature-section" id="features">
@@ -261,8 +356,8 @@
 
       <section class="results-section" id="results">
         <div class="section-heading">
-          <p class="eyebrow">Performance Results</p>
-          <h2>Sample metrics and analysis prepared for project evaluation.</h2>
+          <p class="eyebrow">Analytics Page</p>
+          <h2>Charts and metrics for sensor trends, battery drain, PDR, and uptime.</h2>
         </div>
         <div class="metric-board">
           <article>
@@ -288,7 +383,7 @@
         </div>
         <div class="analysis-layout">
           <article class="chart-card">
-            <h3>Simulation Output</h3>
+            <h3>Temperature Trend</h3>
             <div class="bar-chart" aria-label="Packet delivery ratio chart">
               <span style="height: 72%"><b>Run 1</b></span>
               <span style="height: 86%"><b>Run 2</b></span>
@@ -298,15 +393,70 @@
             <p>Packet delivery improved after node placement and routing adjustments.</p>
           </article>
           <article class="analysis-card">
-            <h3>Findings Interpreted</h3>
+            <h3>Analytics Included</h3>
             <ul>
-              <li>RSSI became weaker as the mobile node moved farther from the gateway.</li>
-              <li>Latency stayed below 30 ms for most stable links.</li>
-              <li>Low-battery nodes had a higher chance of packet loss.</li>
-              <li>WebSocket telemetry is appropriate for continuous network updates.</li>
+              <li>Temperature Trend</li>
+              <li>Humidity Trend</li>
+              <li>Battery Drain Graph</li>
+              <li>Packet Delivery Ratio</li>
+              <li>Node Uptime %</li>
             </ul>
           </article>
         </div>
+      </section>
+
+      <section class="alerts-section" id="alerts">
+        <div class="section-heading">
+          <p class="eyebrow">Alerts Page</p>
+          <h2>Color-coded warnings for node, temperature, battery, and signal issues.</h2>
+        </div>
+        <div class="alert-list">
+          <article class="alert-red"><strong>Node 2 Offline</strong><span>Critical - immediate attention required</span></article>
+          <article class="alert-yellow"><strong>High Temperature at Node 1</strong><span>Warning - threshold exceeded</span></article>
+          <article class="alert-red"><strong>Low Battery at Node 3</strong><span>Critical - battery below safe level</span></article>
+          <article class="alert-yellow"><strong>Weak Signal at Node 4</strong><span>Warning - RSSI is below expected range</span></article>
+          <article class="alert-green"><strong>Gateway Connected</strong><span>Normal - network reachable</span></article>
+        </div>
+      </section>
+
+      <section class="logs-section" id="logs">
+        <div class="section-heading">
+          <p class="eyebrow">Logs / Reports Page</p>
+          <h2>System events, report exports, and downloadable experiment evidence.</h2>
+        </div>
+        <div class="logs-layout">
+          <div class="log-list">
+            <div><span>10:15 AM</span><strong>Node Connected</strong></div>
+            <div><span>10:22 AM</span><strong>Node Restarted</strong></div>
+            <div><span>10:31 AM</span><strong>Sensor Threshold Exceeded</strong></div>
+            <div><span>10:44 AM</span><strong>Firmware Updated</strong></div>
+          </div>
+          <div class="report-actions">
+            <button type="button">Export CSV</button>
+            <button type="button">Export PDF</button>
+            <button type="button">Download Report</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="login-section" id="login">
+        <div class="section-heading">
+          <p class="eyebrow">Login Page</p>
+          <h2>Admin Login for protected WSN testbed access.</h2>
+        </div>
+        <form class="login-card">
+          <label>Username<input type="text" value="admin" /></label>
+          <label>Password<input type="password" value="password" /></label>
+          <button type="button">Login</button>
+        </form>
+      </section>
+
+      <section class="viva-section">
+        <p class="eyebrow">Best Viva Line</p>
+        <blockquote>
+          This project is a web-based WSN Testbed Management Interface used for configuring, programming, monitoring,
+          controlling, and analyzing wireless sensor nodes in real time.
+        </blockquote>
       </section>
 
       <section class="demo-section" id="demo">
@@ -416,8 +566,8 @@
     </main>
 
     <footer>
-      <p>WSN Testbed Management Interface</p>
-      <span>Configure - Program - Monitor - Analyze</span>
+      <p>Wireless Sensor Network Testbed Management Interface</p>
+      <span>Developed for Real-Time Monitoring, Control and Analysis</span>
     </footer>
 
     <script src="script.js"></script>
